@@ -59,7 +59,7 @@ In tedesco corrisponde a *Wenn ... würde / wäre / hätte*.
 Completa le frasi con il **congiuntivo imperfetto** e il **condizionale
 presente**.
 
-1. Se io (avere) __________ più tempo, (studiare) __________ il cinese.
+1. Se io (avere) __________ più tempo, (studiare) __________ l'ungherese.
 2. Se tu (essere) __________ più paziente, (imparare) __________ più in fretta.
 3. Se noi (vivere) __________ al mare, (nuotare) __________ ogni giorno.
 4. Se lui (mangiare) __________ meno dolci, (dimagrire) __________.
@@ -67,6 +67,8 @@ presente**.
 6. Se loro (avere) __________ una macchina, (venire) __________ più spesso.
 7. Se io (essere) __________ ricco, (viaggiare) __________ in tutto il mondo.
 8. Se tu (dormire) __________ di più, (sentirsi) __________ meno stanco.
+9. Se loro (parlare) __________ più lentamente, (capire) __________ meglio.
+10. Se io (sapere) __________ il tuo indirizzo, (mandare) __________ una mail.
 
 ??? success "Soluzioni"
     1. avessi – studierei
@@ -77,3 +79,5 @@ presente**.
     6. avessero – verrebbero
     7. fossi – viaggerei
     8. dormissi – ti sentiresti
+    9. parlassero – capirebbero
+    10. sapessi – manderei
