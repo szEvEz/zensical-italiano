@@ -65,20 +65,32 @@ nav = [
       { "Presente indicativo" = "grammatica/presente-indicativo.md" },
       { "Passato prossimo" = "grammatica/passato-prossimo.md" },
       { "Imperfetto" = "grammatica/imperfetto.md" },
+      { "Trapassato prossimo" = "grammatica/trapassato-prossimo.md" },
+      { "Futuro semplice" = "grammatica/futuro-semplice.md" },
       { "Futuro anteriore" = "grammatica/futuro-anteriore.md" },
       { "Condizionale presente" = "grammatica/condizionale-presente.md" },
+      { "Congiuntivo presente" = "grammatica/congiuntivo-presente.md" },
       { "Congiuntivo imperfetto" = "grammatica/congiuntivo-imperfetto.md" },
+      { "Periodo ipotetico" = "grammatica/periodo-ipotetico.md" },
+      { "Imperativo" = "grammatica/imperativo.md" },
       { "Verbi pronominali" = "grammatica/verbi-pronominali.md" },
     ] },
     { "Pronomi" = [
       { "Pronomi diretti" = "grammatica/pronomi-diretti.md" },
       { "Pronomi indiretti" = "grammatica/pronomi-indiretti.md" },
       { "Pronomi relativi" = "grammatica/pronomi-relativi.md" },
+      { "Pronomi combinati" = "grammatica/pronomi-combinati.md" },
+      { "Ci e ne" = "grammatica/ci-e-ne.md" },
+    ] },
+    { "Articoli" = [
+      { "Articoli" = "grammatica/articoli.md" },
+      { "Articolo partitivo" = "grammatica/partitivo.md" },
     ] },
     { "Aggettivi e avverbi" = [
       { "Aggettivi" = "grammatica/aggettivi.md" },
       { "Avverbi" = "grammatica/avverbi.md" },
       { "Bene, buono, bravo" = "grammatica/bene-buono-bravo.md" },
+      { "Comparativi e superlativi" = "grammatica/comparativi-superlativi.md" },
     ] },
     { "Preposizioni" = "grammatica/preposizioni.md" },
     { "Forma di cortesia (Lei)" = "grammatica/forma-di-cortesia.md" },
@@ -118,7 +130,7 @@ nav = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-#extra_css = ["stylesheets/extra.css"]
+extra_css = ["stylesheets/english.css"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.
@@ -126,7 +138,7 @@ nav = [
 # The path provided should be relative to the "docs_dir".
 #
 # Read more: https://zensical.org/docs/customization/#additional-javascript
-#extra_javascript = ["javascripts/extra.js"]
+extra_javascript = ["javascripts/english.js"]
 
 # ----------------------------------------------------------------------------
 # Section for configuring theme options

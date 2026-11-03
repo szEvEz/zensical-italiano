@@ -1,0 +1,66 @@
+/* English translations: hidden unless the IT/EN toggle is on.
+ *
+ * Markup in the Markdown sources:
+ *   inline           *Hi, welcome!*{ .en }
+ *   whole paragraph  a paragraph whose last line is {: .en }
+ *   larger blocks    <div class="en" markdown> ... </div>
+ */
+.en {
+  display: none;
+}
+
+.show-en .en {
+  display: revert;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Inline translations sit after the Italian, separated by a small gap. */
+.show-en em.en {
+  margin-left: 0.3em;
+}
+
+/* At the end of a paragraph or list item they go on their own line. */
+.show-en p > em.en:last-child,
+.show-en li > em.en:last-child {
+  display: block;
+  margin-left: 0;
+}
+
+.show-en p > em.en:last-child::before,
+.show-en li > em.en:last-child::before {
+  content: "↳ ";
+}
+
+/* Block translations get a thin marker so they read as a gloss. */
+.show-en p.en,
+.show-en div.en {
+  border-left: 0.2rem solid var(--md-accent-fg-color--transparent);
+  padding-left: 0.6rem;
+  font-style: italic;
+}
+
+/* Header toggle */
+.en-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.en-toggle span {
+  padding: 0.1rem 0.25rem;
+  border-radius: 0.15rem;
+  opacity: 0.55;
+}
+
+.en-toggle[aria-pressed="false"] .en-toggle__it,
+.en-toggle[aria-pressed="true"] .en-toggle__en {
+  opacity: 1;
+  outline: 1px solid currentColor;
+}

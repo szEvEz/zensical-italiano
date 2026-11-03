@@ -2,60 +2,64 @@
 
 ## I giorni della settimana
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| lunedì | Montag |
-| martedì | Dienstag |
-| mercoledì | Mittwoch |
-| giovedì | Donnerstag |
-| venerdì | Freitag |
-| sabato | Samstag |
-| domenica | Sonntag |
+| lunedì | Monday |
+| martedì | Tuesday |
+| mercoledì | Wednesday |
+| giovedì | Thursday |
+| venerdì | Friday |
+| sabato | Saturday |
+| domenica | Sunday |
 
 !!! note "Nota"
     I giorni della settimana sono **maschili** (il lunedì, il martedì…), tranne **la domenica**, che è femminile. In italiano si scrivono con la lettera **minuscola**.
 
+    The days of the week are **masculine** (**il lunedì**, **il martedì**…), except **la domenica**, which is feminine. In Italian they are written with a **lower-case** letter.
+    {: .en }
+
 ### Che giorno è oggi?
 
-- **Che giorno è oggi?** (Welcher Tag ist heute?)
-- Oggi **è** lunedì.
-- Ieri **era** domenica.
-- Domani **sarà** martedì.
+- **Che giorno è oggi?** (What day is it today?)
+- Oggi **è** lunedì. *Today is Monday.*{ .en }
+- Ieri **era** domenica. *Yesterday was Sunday.*{ .en }
+- Domani **sarà** martedì. *Tomorrow will be Tuesday.*{ .en }
 
 ## I mesi
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| gennaio | Januar |
-| febbraio | Februar |
-| marzo | März |
+| gennaio | January |
+| febbraio | February |
+| marzo | March |
 | aprile | April |
-| maggio | Mai |
-| giugno | Juni |
-| luglio | Juli |
+| maggio | May |
+| giugno | June |
+| luglio | July |
 | agosto | August |
 | settembre | September |
-| ottobre | Oktober |
+| ottobre | October |
 | novembre | November |
-| dicembre | Dezember |
+| dicembre | December |
 
 ## Le stagioni
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| la primavera | der Frühling |
-| l'estate | der Sommer |
-| l'autunno | der Herbst |
-| l'inverno | der Winter |
+| la primavera | spring |
+| l'estate | summer |
+| l'autunno | autumn |
+| l'inverno | winter |
 
 !!! tip "Trucco"
     Per dire "in un mese" o "in una stagione" usa **a** o **in**: *a gennaio*, *in primavera*, *in estate*, *d'estate*.
+    *To say "in a month" or "in a season", use **a** or **in**: **a gennaio** (in January), **in primavera** (in spring), **in estate** / **d'estate** (in summer).*{ .en }
 
 ## Esercizi
 
-1. Traduci in italiano: *Montag, Mittwoch, Freitag*.
-2. Completa: "Oggi è martedì, ieri ___ lunedì, domani ___ mercoledì."
-3. In quale stagione siamo a luglio?
+1. Traduci in italiano: *Monday, Wednesday, Friday*.
+2. Completa: "Oggi è martedì, ieri ___ lunedì, domani ___ mercoledì." *Complete: "Today is Tuesday, yesterday ___ Monday, tomorrow ___ Wednesday."*{ .en }
+3. In quale stagione siamo a luglio? *What season is it in July?*{ .en }
 
 ??? success "Soluzioni"
     1. lunedì, mercoledì, venerdì

@@ -1,53 +1,56 @@
 # Parole avanzate
 
 Parole avanzate per arricchire il vocabolario. Per ogni parola trovi il **Significato** e un **Esempio**.
+*Advanced words to enrich your vocabulary. For each word you'll find its **Significato** (meaning) and an **Esempio** (example).*{ .en }
 
 ## effimero
-- **Significato:** che dura pochissimo, fugace.
-- **Esempio:** La bellezza dei fiori di ciliegio è effimera.
+- **Significato:** che dura pochissimo, fugace. *ephemeral: lasting a very short time, fleeting.*{ .en }
+- **Esempio:** La bellezza dei fiori di ciliegio è effimera. *The beauty of cherry blossoms is ephemeral.*{ .en }
 
 ## inequivocabile
-- **Significato:** chiarissimo, senza dubbi.
-- **Esempio:** Il calo delle temperature è un segno inequivocabile che l'autunno è arrivato.
+- **Significato:** chiarissimo, senza dubbi. *unmistakable, unequivocal: perfectly clear, beyond doubt.*{ .en }
+- **Esempio:** Il calo delle temperature è un segno inequivocabile che l'autunno è arrivato. *The drop in temperatures is an unmistakable sign that autumn has arrived.*{ .en }
 
 ## empatia
-- **Significato:** capacità di immedesimarsi negli altri.
-- **Esempio:** Un buon insegnante deve avere molta empatia.
+- **Significato:** capacità di immedesimarsi negli altri. *empathy: the ability to put yourself in other people's shoes.*{ .en }
+- **Esempio:** Un buon insegnante deve avere molta empatia. *A good teacher needs to have a lot of empathy.*{ .en }
 
 ## ridondante
-- **Significato:** eccessivo, ripetitivo.
-- **Esempio:** Questo paragrafo è ridondante: ripeti concetti già detti.
+- **Significato:** eccessivo, ripetitivo. *redundant: excessive, repetitive.*{ .en }
+- **Esempio:** Questo paragrafo è ridondante: ripeti concetti già detti. *This paragraph is redundant: you repeat ideas you've already stated.*{ .en }
 
 ## meticoloso
-- **Significato:** che fa le cose con estrema cura, scrupoloso.
-- **Esempio:** Marco è un artigiano meticoloso.
+- **Significato:** che fa le cose con estrema cura, scrupoloso. *meticulous: doing things with extreme care, scrupulous.*{ .en }
+- **Esempio:** Marco è un artigiano meticoloso. *Marco is a meticulous craftsman.*{ .en }
 
 ## sinergia
-- **Significato:** collaborazione tra più elementi per un risultato migliore.
-- **Esempio:** La sinergia tra i due reparti ha reso la campagna un successo.
+- **Significato:** collaborazione tra più elementi per un risultato migliore. *synergy: cooperation between several elements for a better result.*{ .en }
+- **Esempio:** La sinergia tra i due reparti ha reso la campagna un successo. *The synergy between the two departments made the campaign a success.*{ .en }
 
 ## futilità
-- **Significato:** cosa frivola, di poca importanza.
-- **Esempio:** Abbiamo perso tempo a discutere di futilità.
+- **Significato:** cosa frivola, di poca importanza. *trifle, triviality: something frivolous, of little importance.*{ .en }
+- **Esempio:** Abbiamo perso tempo a discutere di futilità. *We wasted time arguing about trivialities.*{ .en }
 
 ## evidenziare
-- **Significato:** mettere in rilievo.
-- **Esempio:** Vorrei evidenziare i punti di forza del progetto.
+- **Significato:** mettere in rilievo. *to highlight, to emphasise: to bring to the fore.*{ .en }
+- **Esempio:** Vorrei evidenziare i punti di forza del progetto. *I'd like to highlight the project's strengths.*{ .en }
 
 ## altruismo
-- **Significato:** amore verso il prossimo, contrario di egoismo.
-- **Esempio:** Ha dimostrato un grande altruismo.
+- **Significato:** amore verso il prossimo, contrario di egoismo. *altruism: love for one's fellow human beings, the opposite of selfishness.*{ .en }
+- **Esempio:** Ha dimostrato un grande altruismo. *He showed great altruism.*{ .en }
 
 ## consapevolezza
-- **Significato:** chiara conoscenza di una situazione o di sé.
-- **Esempio:** Viaggiare da soli aiuta ad acquisire consapevolezza.
+- **Significato:** chiara conoscenza di una situazione o di sé. *awareness: clear knowledge of a situation or of oneself.*{ .en }
+- **Esempio:** Viaggiare da soli aiuta ad acquisire consapevolezza. *Travelling alone helps you gain self-awareness.*{ .en }
 
 !!! tip "Trucco"
     Prova a usare almeno una di queste parole al giorno in una frase tua: così passano dalla memoria passiva a quella attiva.
+    *Try to use at least one of these words a day in a sentence of your own: that way they move from your passive memory to your active one.*{ .en }
 
 ## Esercizio — Inserisci la parola corretta
 
 Completa ogni frase con la parola giusta (nella forma corretta).
+*Complete each sentence with the right word (in the correct form).*{ .en }
 
 1. Il successo del festival è stato il risultato di una perfetta ___ tra il comune e le associazioni.
 2. Non dovresti arrabbiarti per queste ___; ci sono cose più importanti.

@@ -1,40 +1,53 @@
 # La differenza tra bene, buono e bravo
 
-Tre parole che i tedeschi confondono spesso, perché in tedesco corrispondono quasi tutte a **gut**. In italiano hanno usi diversi.
+Tre parole che chi parla inglese confonde spesso, perché in inglese corrispondono quasi tutte a **good** (o **well**). In italiano hanno usi diversi.
+
+Three words that English speakers often mix up, because in English they nearly all correspond to **good** (or **well**). In Italian they are used differently.
+{: .en }
 
 ## Le tre parole
 
-### buono — aggettivo (Qualität einer Sache)
+### buono — aggettivo (quality of a thing)
 
 **buono** è un **aggettivo** e indica la qualità di una cosa, spesso il cibo. Si accorda: buono / buona / buoni / buone.
 
-- Questo dolce è **buono**.
-- Questa pasta è **buona**.
+**buono** is an **adjective** and describes the quality of a thing, often food. It agrees: buono / buona / buoni / buone.
+{: .en }
 
-### bene — avverbio (wie / Zustand)
+- Questo dolce è **buono**. *This dessert is good.*{ .en }
+- Questa pasta è **buona**. *This pasta is good.*{ .en }
+
+### bene — avverbio (how / state)
 
 **bene** è un **avverbio**: dice *come* si fa qualcosa oppure indica uno stato. **Non cambia mai**.
 
-- Parli **bene** l'italiano.
-- Oggi sto **bene**.
+**bene** is an **adverb**: it says **how** something is done, or describes a state. **It never changes**.
+{: .en }
 
-### bravo — aggettivo (Fähigkeit einer Person)
+- Parli **bene** l'italiano. *You speak Italian well.*{ .en }
+- Oggi sto **bene**. *I'm well today.*{ .en }
 
-**bravo** è un **aggettivo** e indica l'**abilità di una persona** (tüchtig, gut in etwas). Si accorda: bravo / brava / bravi / brave.
+### bravo — aggettivo (a person's ability)
 
-- Marco è **bravo** a cucinare.
-- un **bravo** insegnante.
+**bravo** è un **aggettivo** e indica l'**abilità di una persona** (capable, good at something). Si accorda: bravo / brava / bravi / brave.
+
+**bravo** is an **adjective** and describes **a person's ability** (being capable, good at something). It agrees: bravo / brava / bravi / brave.
+{: .en }
+
+- Marco è **bravo** a cucinare. *Marco is good at cooking.*{ .en }
+- un **bravo** insegnante. *a good teacher.*{ .en }
 
 ## Regola rapida
 
 !!! tip "Regola"
-    - Parli di una **cosa** (com'è)? → **buono** (aggettivo, si accorda)
-    - Parli di **come** si fa un'azione o di uno **stato**? → **bene** (avverbio, invariabile)
-    - Parli di **quanto è capace una persona**? → **bravo** (aggettivo, si accorda)
+    - Parli di una **cosa** (com'è)? → **buono** (aggettivo, si accorda) *Talking about a **thing** (what it's like)? → **buono** (adjective, agrees)*{ .en }
+    - Parli di **come** si fa un'azione o di uno **stato**? → **bene** (avverbio, invariabile) *Talking about **how** an action is done, or a **state**? → **bene** (adverb, invariable)*{ .en }
+    - Parli di **quanto è capace una persona**? → **bravo** (aggettivo, si accorda) *Talking about **how capable a person is**? → **bravo** (adjective, agrees)*{ .en }
 
 ## Esercizio — Completa con bene / buono / bravo
 
 Attenzione all'accordo (genere e numero) per *buono* e *bravo*!
+*Watch out for agreement (gender and number) with **buono** and **bravo**!*{ .en }
 
 1. Luca è molto ___ a suonare la chitarra.
 2. Questo ristorante è davvero ___.
@@ -91,7 +104,7 @@ Attenzione all'accordo (genere e numero) per *buono* e *bravo*!
     21. bravo
     22. buona
     23. bene
-    24. bravo / buono — *bravo* = capace, abile; *buono* = di buon cuore (gutherzig). Dipende dal significato.
+    24. bravo / buono — *bravo* = capace, abile; *buono* = di buon cuore (good-hearted). Dipende dal significato.
     25. buono
     26. bene
     27. bravi

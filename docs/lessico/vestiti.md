@@ -1,79 +1,83 @@
 # I vestiti
 
 > Ci vestiamo in base alla **stagione** e al tempo. In primavera, quando il tempo è instabile, indossiamo una felpa o un maglione leggero e portiamo sempre un ombrello. In estate, con il caldo, mettiamo una maglietta e i pantaloncini. In autunno torniamo a coprirci con la giacca e la sciarpa, e in inverno ci difendiamo dal freddo con il cappotto, i guanti e gli stivali. A casa stiamo comodi in tuta o in pigiama, mentre per le occasioni speciali scegliamo abiti eleganti.
+>
+> We dress according to the **season** and the weather. In spring, when the weather is changeable, we wear a sweatshirt or a light jumper and always carry an umbrella. In summer, when it's hot, we put on a T-shirt and shorts. In autumn we cover up again with a jacket and a scarf, and in winter we protect ourselves from the cold with a coat, gloves and boots. At home we stay comfortable in a tracksuit or pyjamas, while for special occasions we choose smart clothes.
+> {: .en }
 
 ## Vocabolario per stagione
 
 ### Primavera
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| la felpa | das Sweatshirt |
-| il maglione leggero | der leichte Pullover |
-| la giacca | die Jacke |
-| i jeans | die Jeans |
-| l'impermeabile | die Regenjacke |
-| l'ombrello | der Regenschirm |
-| le scarpe da ginnastica | die Turnschuhe |
+| la felpa | sweatshirt |
+| il maglione leggero | light jumper |
+| la giacca | jacket |
+| i jeans | jeans |
+| l'impermeabile | raincoat |
+| l'ombrello | umbrella |
+| le scarpe da ginnastica | trainers |
 
 ### Estate
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| la maglietta | das T-Shirt |
-| i pantaloncini | die kurze Hose |
-| i pantaloni leggeri | die leichte Hose |
-| il costume da bagno | die Badebekleidung |
-| le ciabatte | die Badelatschen |
-| gli occhiali da sole | die Sonnenbrille |
-| il cappello | der Hut |
+| la maglietta | T-shirt |
+| i pantaloncini | shorts |
+| i pantaloni leggeri | light trousers |
+| il costume da bagno | swimsuit |
+| le ciabatte | flip-flops |
+| gli occhiali da sole | sunglasses |
+| il cappello | hat |
 
 ### Autunno
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| la camicia | das Hemd |
-| il maglione | der Pullover |
-| la giacca | die Jacke |
-| i pantaloni lunghi | die lange Hose |
-| la sciarpa | der Schal |
+| la camicia | shirt |
+| il maglione | jumper |
+| la giacca | jacket |
+| i pantaloni lunghi | long trousers |
+| la sciarpa | scarf |
 
 ### Inverno
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| il cappotto | der Mantel |
-| il maglione pesante | der dicke Pullover |
-| la sciarpa | der Schal |
-| il berretto | die Mütze |
-| i guanti | die Handschuhe |
-| gli stivali | die Stiefel |
+| il cappotto | coat |
+| il maglione pesante | thick jumper |
+| la sciarpa | scarf |
+| il berretto | woolly hat |
+| i guanti | gloves |
+| gli stivali | boots |
 
 ### A casa / occasioni
 
-| Italiano | Tedesco |
+| Italiano | Inglese |
 |-----------|-----------|
-| la tuta | der Trainingsanzug |
-| il pigiama | der Schlafanzug |
-| la camicia elegante | das elegante Hemd |
-| i pantaloni eleganti | die elegante Hose |
-| le scarpe eleganti | die eleganten Schuhe |
+| la tuta | tracksuit |
+| il pigiama | pyjamas |
+| la camicia elegante | dress shirt |
+| i pantaloni eleganti | smart trousers |
+| le scarpe eleganti | smart shoes |
 
 !!! note "Nota — indossare / mettere / portare"
     Tre verbi utili per parlare di vestiti:
+    *Three useful verbs for talking about clothes:*{ .en }
 
-    - **indossare** = tragen (in un dato momento): *Oggi indosso un maglione.*
-    - **mettere / mettersi** = anziehen (l'azione): *Mi metto la giacca.*
-    - **portare** = tragen / anhaben (abitualmente): *Porto sempre gli occhiali.*
+    - **indossare** = to wear (in un dato momento): *Oggi indosso un maglione.* *(at a given moment) — I'm wearing a jumper today.*{ .en }
+    - **mettere / mettersi** = to put on (l'azione): *Mi metto la giacca.* *(the action) — I put my jacket on.*{ .en }
+    - **portare** = to wear / to have on (abitualmente): *Porto sempre gli occhiali.* *(habitually) — I always wear glasses.*{ .en }
 
 !!! tip "Trucco"
-    Ricorda: **ombrello** = Regenschirm, **maglione** = Pullover, **sciarpa** = Schal, **guanti** = Handschuhe, **stivali** = Stiefel.
+    Ricorda: **ombrello** = umbrella, **maglione** = jumper, **sciarpa** = scarf, **guanti** = gloves, **stivali** = boots.
 
 ## Esercizi
 
-1. Che cosa metti quando piove?
-2. Traduci: "Im Winter trage ich einen Mantel, einen Schal und Handschuhe."
-3. Abbina: felpa, ciabatte, cappotto → primavera / estate / inverno.
+1. Che cosa metti quando piove? *What do you put on when it rains?*{ .en }
+2. Traduci: "In winter I wear a coat, a scarf and gloves."
+3. Abbina: felpa, ciabatte, cappotto → primavera / estate / inverno. *Match each item to a season: **felpa**, **ciabatte**, **cappotto** → **primavera** / **estate** / **inverno**.*{ .en }
 
 ??? success "Soluzioni"
     1. Quando piove metto l'**impermeabile** e prendo l'**ombrello**.

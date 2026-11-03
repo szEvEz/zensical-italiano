@@ -3,36 +3,53 @@
 Questa pagina tratta due argomenti utili: l'uso di **in** e **a** con i luoghi e le
 **preposizioni articolate** (preposizione + articolo).
 
+This page covers two useful topics: using **in** and **a** with places, and
+**articulated prepositions** (preposition + article).
+{: .en }
+
 ## (A) *in* vs *a* con i luoghi
 
 La regola di base per dire *dove sei* o *dove vai*:
+*The basic rule for saying where you are or where you're going:*{ .en }
 
-- **a** con le **città**: a Milano, a Napoli, a Catania
+- **a** con le **città**: a Milano, a Napoli, a Catania *use **a** with **cities**: in/to Milan, Naples, Catania*{ .en }
 - **in** con **nazioni, regioni e isole grandi**: in Italia, in Germania, in
-  Sicilia, in Sardegna
+  Sicilia, in Sardegna *use **in** with **countries, regions and large islands**: in/to Italy, Germany, Sicily, Sardinia*{ .en }
 
 !!! note "Nota"
-    In tedesco spesso si usa *in* in entrambi i casi (*in Mailand*, *in Italien*),
+    In inglese spesso si usa *in* in entrambi i casi (*in Milan*, *in Italy*),
     perciò bisogna fare attenzione: in italiano le città vogliono **a**.
+
+    In English you often use "in" in both cases ("in Milan", "in Italy"),
+    so be careful: in Italian, cities take **a**.
+    {: .en }
 
 ### Esempi
 
-- Io vivo **in** Brasile, **a** Buenos Aires, **a** San Paolo.
-- Io vivevo **in** Ucraina, ora vivo **in** Polonia.
-- Io vivevo **a** Milano, ora vivo **a** Salerno.
-- La mia casa è **a** Napoli, ma ora sono **in** Francia.
-- Le vacanze le ho trascorse **a** Cuba.
-- Mi piace il mare **in** Sardegna.
-- Mia madre è in vacanza **in** Spagna.
+- Io vivo **in** Brasile, **a** Buenos Aires, **a** San Paolo. *I live in Brazil, in Buenos Aires, in São Paulo.*{ .en }
+- Io vivevo **in** Ucraina, ora vivo **in** Polonia. *I used to live in Ukraine, now I live in Poland.*{ .en }
+- Io vivevo **a** Milano, ora vivo **a** Salerno. *I used to live in Milan, now I live in Salerno.*{ .en }
+- La mia casa è **a** Napoli, ma ora sono **in** Francia. *My home is in Naples, but right now I'm in France.*{ .en }
+- Le vacanze le ho trascorse **a** Cuba. *I spent my holidays in Cuba.*{ .en }
+- Mi piace il mare **in** Sardegna. *I like the sea in Sardinia.*{ .en }
+- Mia madre è in vacanza **in** Spagna. *My mother is on holiday in Spain.*{ .en }
 
 !!! tip "Trucco"
     Città piccola/singolo punto → **a**. Territorio grande (stato, regione,
     isola grande) → **in**.
 
+    Small town / single point → **a**. Large territory (country, region,
+    large island) → **in**.
+    {: .en }
+
 ## (B) Preposizioni articolate
 
 Quando le preposizioni **di, a, da, in, su** incontrano un articolo determinativo,
 si fondono in una sola parola.
+
+When the prepositions **di, a, da, in, su** meet a definite article,
+they merge into a single word.
+{: .en }
 
 | prep. | il | lo | la | l' | i | gli | le |
 |---|---|---|---|---|---|---|---|
@@ -46,9 +63,15 @@ si fondono in una sola parola.
     Anche **con** può articolarsi (col, coi), ma oggi si scrive di solito staccato
     (*con il*, *con i*). Le preposizioni **per, tra, fra** non si articolano mai.
 
+    **Con** can also combine with the article (col, coi), but nowadays it's usually
+    written separately (**con il**, **con i**). The prepositions **per, tra, fra**
+    never combine with the article.
+    {: .en }
+
 ### Esercizio
 
 Completa con la preposizione articolata corretta.
+*Fill in with the correct articulated preposition.*{ .en }
 
 1. Il libro è sul tavolo ______ cucina.
 2. Domani andrò ______ dentista.
