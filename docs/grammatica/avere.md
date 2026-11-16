@@ -92,3 +92,11 @@ Vedi anche il verbo [*essere*](essere.md) e il [presente indicativo](presente-in
 
 See also the verb [**essere**](essere.md) and the [present indicative](presente-indicativo.md).
 {: .en }
+
+!!! tip "Tutti i tempi"
+    La tabella completa di *avere* (passato, futuro, condizionale, congiuntivo…)
+    è nelle [tabelle dei verbi](verbi/avere.md).
+
+    The full table for **avere** (past, future, conditional, subjunctive…) is in
+    the [verb tables](verbi/avere.md).
+    {: .en }

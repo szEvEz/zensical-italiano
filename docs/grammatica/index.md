@@ -17,39 +17,48 @@ with tables, examples and exercises with solutions. Every page is aimed at
     translation on every page.
     {: .en }
 
-## Tempi e modi verbali
-
-- [Verbo *essere* (presente)](essere.md)
-- [Verbo *avere* (presente)](avere.md)
-- [Presente indicativo](presente-indicativo.md)
-- [Passato prossimo](passato-prossimo.md)
-- [Imperfetto](imperfetto.md)
-- [Trapassato prossimo](trapassato-prossimo.md)
-- [Futuro semplice](futuro-semplice.md)
-- [Futuro anteriore](futuro-anteriore.md)
-- [Condizionale presente](condizionale-presente.md)
-- [Congiuntivo presente](congiuntivo-presente.md)
-- [Congiuntivo imperfetto](congiuntivo-imperfetto.md)
-- [Periodo ipotetico](periodo-ipotetico.md)
-- [Imperativo](imperativo.md)
-- [Verbi pronominali](verbi-pronominali.md)
-
-## Pronomi
-
-- [Pronomi diretti](pronomi-diretti.md)
-- [Pronomi indiretti](pronomi-indiretti.md)
-- [Pronomi relativi](pronomi-relativi.md)
-- [Pronomi combinati](pronomi-combinati.md)
-- [*Ci* e *ne*](ci-e-ne.md)
-
 ## Articoli
 
 - [Articoli determinativi e indeterminativi](articoli.md)
 - [Articolo partitivo](partitivo.md)
 
-## Preposizioni
+## Il presente
 
-- [Preposizioni](preposizioni.md)
+- [Verbo *essere*](essere.md)
+- [Verbo *avere*](avere.md)
+- [Presente indicativo](presente-indicativo.md)
+- [Verbi pronominali](verbi-pronominali.md)
+
+## Il passato
+
+- [Passato prossimo](passato-prossimo.md)
+- [Imperfetto](imperfetto.md)
+- [Trapassato prossimo](trapassato-prossimo.md)
+
+## Il futuro
+
+- [Futuro semplice](futuro-semplice.md)
+- [Futuro anteriore](futuro-anteriore.md)
+
+## Imperativo e cortesia
+
+- [Imperativo](imperativo.md)
+- [Forma di cortesia](forma-di-cortesia.md)
+
+## Condizionale e congiuntivo
+
+- [Condizionale presente](condizionale-presente.md)
+- [Congiuntivo presente](congiuntivo-presente.md)
+- [Congiuntivo imperfetto](congiuntivo-imperfetto.md)
+- [Periodo ipotetico](periodo-ipotetico.md)
+
+## Pronomi
+
+- [Pronomi diretti](pronomi-diretti.md)
+- [Pronomi indiretti](pronomi-indiretti.md)
+- [Pronomi combinati](pronomi-combinati.md)
+- [*Ci* e *ne*](ci-e-ne.md)
+- [Pronomi relativi](pronomi-relativi.md)
 
 ## Aggettivi e avverbi
 
@@ -58,6 +67,17 @@ with tables, examples and exercises with solutions. Every page is aimed at
 - [*Bene*, *buono*, *bravo*](bene-buono-bravo.md)
 - [Comparativi e superlativi](comparativi-superlativi.md)
 
-## Cortesia
+## Preposizioni
 
-- [Forma di cortesia](forma-di-cortesia.md)
+- [Preposizioni](preposizioni.md)
+
+## Tabelle dei verbi
+
+Tutti i tempi principali dei verbi più importanti (*essere, avere, fare,
+andare, venire, potere, volere, dovere…*) in una sola pagina per verbo.
+
+All the main tenses of the most important verbs (**essere, avere, fare,
+andare, venire, potere, volere, dovere…**) on one page per verb.
+{: .en }
+
+- [Panoramica delle tabelle](verbi/index.md)

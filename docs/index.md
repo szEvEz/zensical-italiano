@@ -15,6 +15,15 @@ vocabulary, readings, dialogues and exercises with solutions.
 
 <div class="grid cards" markdown>
 
+- **[Grammatica](grammatica/index.md)**
+
+    I tempi verbali (presente, passato prossimo, imperfetto, condizionale…),
+    i pronomi, le preposizioni, gli aggettivi e gli avverbi, e le tabelle dei verbi.
+
+    Verb tenses (present, present perfect, imperfect, conditional…),
+    pronouns, prepositions, adjectives and adverbs, plus verb tables.
+    {: .en }
+
 - **[Conversazione](conversazione/index.md)**
 
     Domande e risposte per parlare di sé: presentarsi, famiglia, gusti, routine,
@@ -22,15 +31,6 @@ vocabulary, readings, dialogues and exercises with solutions.
 
     Questions and answers for talking about yourself: introducing yourself, family,
     likes, routine, work, hobbies and friendship.
-    {: .en }
-
-- **[Grammatica](grammatica/index.md)**
-
-    I tempi verbali (presente, passato prossimo, imperfetto, condizionale…),
-    i pronomi, le preposizioni, gli aggettivi e gli avverbi.
-
-    Verb tenses (present, present perfect, imperfect, conditional…),
-    pronouns, prepositions, adjectives and adverbs.
     {: .en }
 
 - **[Lessico](lessico/index.md)**
