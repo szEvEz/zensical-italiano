@@ -46,7 +46,7 @@ Copyright &copy; 2026 szEvEz
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "Home" = "index.md" },
-  { "Piano di 14 giorni" = "piano/index.md" },
+  { "Piano di 90 giorni" = "piano/index.md" },
   { "Grammatica" = [
     { "Panoramica" = "grammatica/index.md" },
     { "Articoli" = [

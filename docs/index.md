@@ -15,13 +15,13 @@ vocabulary, readings, dialogues and exercises with solutions.
 
 <div class="grid cards" markdown>
 
-- **[Piano di 14 giorni](piano/index.md)**
+- **[Piano di 90 giorni](piano/index.md)**
 
-    Due settimane di studio guidato, 60–90 minuti al giorno: flashcard, esercizi,
-    traduzione, dettato, scrittura e parlato.
+    Novanta giorni di studio guidato, mezz'ora al giorno: dalle basi al B1,
+    con flashcard, esercizi, traduzione, parlato e scrittura.
 
-    Two weeks of guided study, 60–90 minutes a day: flashcards, exercises,
-    translation, dictation, writing and speaking.
+    Ninety days of guided study, half an hour a day: from the basics to B1,
+    with flashcards, exercises, translation, speaking and writing.
     {: .en }
 
 - **[Grammatica](grammatica/index.md)**
