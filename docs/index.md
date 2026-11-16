@@ -15,6 +15,15 @@ vocabulary, readings, dialogues and exercises with solutions.
 
 <div class="grid cards" markdown>
 
+- **[Piano di 14 giorni](piano/index.md)**
+
+    Due settimane di studio guidato, 60–90 minuti al giorno: flashcard, esercizi,
+    traduzione, dettato, scrittura e parlato.
+
+    Two weeks of guided study, 60–90 minutes a day: flashcards, exercises,
+    translation, dictation, writing and speaking.
+    {: .en }
+
 - **[Grammatica](grammatica/index.md)**
 
     I tempi verbali (presente, passato prossimo, imperfetto, condizionale…),

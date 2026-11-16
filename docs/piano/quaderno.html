@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quaderno d'italiano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: a squared-paper school notebook (quaderno a quadretti); one column of blocks, corrections in red and blue pen like an Italian teacher. */
+:root{
+  --paper:#f7f9fd; --grid:rgba(52,98,178,.09); --card:#ffffff; --ink:#18233d; --muted:#5a6681; --line:#dce3ef;
+  --blue:#1d4ed8; --blue-soft:#e6edff; --red:#c62828; --red-soft:#fde8e8; --green:#16794c; --green-soft:#e3f4ec;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hand:"Caveat", "Bradley Hand", "Segoe Print", cursive;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0e1422; --grid:rgba(130,160,225,.07); --card:#151d2f; --ink:#e4eaf6; --muted:#97a3bb; --line:#26314a;
+  --blue:#86a8ff; --blue-soft:#1b2747; --red:#ff7a72; --red-soft:#3a1d22; --green:#5ccf97; --green-soft:#132e25; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0e1422; --grid:rgba(130,160,225,.07); --card:#151d2f; --ink:#e4eaf6; --muted:#97a3bb; --line:#26314a;
+  --blue:#86a8ff; --blue-soft:#1b2747; --red:#ff7a72; --red-soft:#3a1d22; --green:#5ccf97; --green-soft:#132e25; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+.home-link{font-size:.85rem;text-decoration:none}
+body{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px;color:var(--ink);font:15px/1.55 var(--body)}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--blue)}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+.hand{font-family:var(--hand);font-size:1.35em;line-height:1}
+.muted{color:var(--muted)}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* header */
+header.top{padding-block:20px 0}
+.brand{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px}
+.brand h1{font-size:1.7rem;font-weight:700}
+.brand h1 span{color:var(--red);font-family:var(--hand);font-size:1.15em;font-weight:600;margin-left:4px}
+.stats{display:flex;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.stats b{color:var(--ink);font-variant-numeric:tabular-nums}
+nav.tabs{display:flex;gap:4px;margin-top:14px;border-bottom:1px solid var(--line);overflow-x:auto}
+nav.tabs a{padding:8px 14px;text-decoration:none;color:var(--muted);font-weight:500;border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-color:var(--red)}
+.pill{display:inline-block;min-width:1.4em;padding:0 6px;border-radius:99px;background:var(--red-soft);color:var(--red);font-size:.75rem;font-weight:600;text-align:center;margin-left:4px}
+.sync{font-size:.75rem;color:var(--muted)}
+
+main{padding-block:24px 64px;display:flex;flex-direction:column;gap:20px}
+
+/* generic */
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:7px 12px;cursor:pointer;font-weight:500;font-size:.9rem}
+.btn:hover{border-color:var(--blue)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:var(--card)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.small{padding:4px 9px;font-size:.82rem}
+.btn[disabled]{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.82rem;padding:3px 10px;border-radius:99px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:var(--blue)}
+.note{background:var(--blue-soft);border-radius:8px;padding:10px 14px;font-size:.9rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;min-width:0}
+
+/* plan */
+.intro{display:grid;gap:14px}
+.intro p{margin:0;max-width:65ch}
+.daytype{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.daytype li{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--paper);font-size:.85rem}
+.daytype b{display:block;font-size:.9rem}
+.week h2{font-size:1.15rem;margin-bottom:10px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);text-decoration:none;color:var(--ink);min-height:118px}
+.tile:hover{border-color:var(--blue)}
+.tile .d{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted)}
+.tile .t{font-family:var(--display);font-weight:500;font-size:1rem;line-height:1.2;flex:1}
+.tile.today{border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
+.tile .tag{font-size:.7rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.06em}
+.bar{height:5px;border-radius:9px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green)}
+.tile.full .t::after{content:" ✓";color:var(--green)}
+
+/* day */
+.dayhead{display:grid;gap:8px}
+.dayhead h1{font-size:2rem}
+.daynav{display:flex;justify-content:space-between;gap:8px;font-size:.9rem}
+.daynav a{text-decoration:none}
+.block{background:var(--card);border:1px solid var(--line);border-radius:12px;min-width:0}
+.block.isdone{border-color:color-mix(in srgb,var(--green) 45%,var(--line))}
+.bhead{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.bnum{font-family:var(--display);font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;width:1.4em}
+.btitle{flex:1;min-width:0}
+.btitle h2{font-size:1.1rem}
+.btitle p{margin:0;font-size:.82rem;color:var(--muted)}
+.mins{font-size:.8rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.star{color:var(--red)}
+.check{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;flex:none;color:transparent;font-weight:700}
+.check[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--card)}
+.bbody{padding:16px 18px 18px;display:grid;gap:14px;min-width:0}
+.theory{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:68ch}
+
+/* exercises */
+ol.items{margin:0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:it}
+ol.items>li{counter-increment:it;display:grid;grid-template-columns:2em 1fr;gap:4px 8px;padding:10px 12px;border-radius:8px;background:var(--paper);border:1px solid transparent}
+ol.items>li::before{content:counter(it);font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+ol.items>li.ok{background:var(--green-soft)}
+ol.items>li.wrong{background:var(--red-soft)}
+ol.items>li.near{background:var(--blue-soft)}
+.q{min-width:0;line-height:2}
+.q input.fill{border:none;border-bottom:2px solid var(--muted);background:transparent;padding:0 4px;margin:0 2px;min-width:5ch;max-width:100%;outline:none}
+.q input.fill:focus{border-color:var(--blue)}
+li.ok input.fill{border-color:var(--green);color:var(--green);font-weight:600}
+li.wrong input.fill{border-color:var(--red);color:var(--red);text-decoration:line-through}
+li.near input.fill{border-color:var(--blue);color:var(--blue)}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.opt{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:4px 12px;cursor:pointer}
+.opt.right{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:600}
+.opt.chosen-wrong{border-color:var(--red);color:var(--red);text-decoration:line-through}
+.fb-line{grid-column:2;font-size:.9rem;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.pen-red{color:var(--red)} .pen-blue{color:var(--blue)} .pen-green{color:var(--green)}
+.score{font-weight:600;font-variant-numeric:tabular-nums}
+
+/* translation, dictation, writing */
+.tr-item,.dict-item{display:grid;gap:6px;padding:12px;border-radius:8px;background:var(--paper)}
+.en{font-weight:500}
+textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:8px 10px;resize:vertical;line-height:1.5}
+textarea.write{min-height:220px;background-image:linear-gradient(transparent calc(1.5em + 7px),var(--grid) 0);background-size:100% 1.5em}
+input.line{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:8px 10px}
+.model{font-size:.92rem;color:var(--green)}
+.diff span{padding:0 1px}
+.diff .miss{color:var(--red);text-decoration:underline wavy}
+.diff .acc{color:var(--blue);text-decoration:underline}
+.fb{border-left:3px solid var(--red);padding:4px 0 4px 14px;display:grid;gap:10px}
+.fb p{margin:0}
+.fb .corrected{background:var(--paper);border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+.errs{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.errs li.grave::marker{color:var(--red)}
+.errs li.lieve::marker{color:var(--blue)}
+.errs s{color:var(--muted)}
+.errs .grave b{color:var(--red)} .errs .lieve b{color:var(--blue)}
+.legend{font-size:.8rem;color:var(--muted)}
+.ai-only{display:none} body[data-ai="yes"] .ai-only{display:revert}
+.no-ai{display:none} body[data-ai="no"] .no-ai{display:revert}
+body[data-audio="no"] .audio-only{display:none}
+.no-audio{display:none} body[data-audio="no"] .no-audio{display:block}
+
+/* speaking */
+.qs{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.qs li{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--paper);border-radius:8px}
+.qs li span{min-width:0}
+.timer{font-variant-numeric:tabular-nums;min-width:4.5em;justify-content:center}
+.timer.run{border-color:var(--red);color:var(--red)}
+.mission{font-size:1.05rem;max-width:65ch;margin:0}
+
+/* flashcards */
+.fc{display:grid;gap:12px;justify-items:center;padding:6px 0}
+.card{width:100%;max-width:440px;min-height:170px;border:1px solid var(--line);border-radius:12px;background:var(--paper);display:grid;place-items:center;padding:20px;text-align:center;gap:8px}
+.card .front{font-size:1.25rem;font-weight:500}
+.card .back{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--blue)}
+.fc .meta{font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.decks{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.deck{display:grid;gap:8px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.deck h3{font-size:1rem}
+
+/* errori */
+.notes{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.notes li{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;padding:10px 12px;background:var(--paper);border-radius:8px}
+.notes li div{min-width:0}
+.empty{text-align:center;padding:30px 10px;color:var(--muted)}
+
+@media (max-width:560px){
+  .dayhead h1{font-size:1.6rem}
+  .bhead{padding:12px 14px} .bbody{padding:14px}
+  ol.items>li{grid-template-columns:1.6em 1fr}
+}
+@media (prefers-reduced-motion:no-preference){ .card{transition:border-color .2s} }
+</style>
+</head>
+<body>
+
+
+<header class="top"><div class="wrap">
+  <a class="home-link" href="../">← Il mio italiano</a>
+  <div class="brand">
+    <h1>Quaderno d'italiano<span>14 giorni</span></h1>
+    <div class="stats" id="stats"></div>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</div></header>
+<main class="wrap" id="app"></main>
+
+<script>
+const WIKI = "https://szevez.github.io/zensical-italiano/";
+
+/* Flashcard decks: "italiano|english" */
+const DECKS = {
+  emozioni: { name: "Le emozioni", src: "lessico/emozioni/", cards: [
+    "felice|happy","triste|sad","arrabbiato/a|angry","tranquillo/a|calm","preoccupato/a|worried","entusiasta|enthusiastic","stanco/a|tired","rilassato/a|relaxed","nervoso/a|nervous","orgoglioso/a|proud","deluso/a|disappointed","curioso/a|curious","spaventato/a|scared","soddisfatto/a|satisfied","confuso/a|confused","emozionato/a|excited","annoiato/a|bored","sollevato/a|relieved","grato/a|grateful","fiducioso/a|confident, hopeful"]},
+  persA: { name: "Personalità (1)", src: "lessico/personalita/", cards: [
+    "generoso|generous","altruista|selfless","divertente|funny","timido|shy","silenzioso|quiet","introverso|introverted","studioso|studious","irascibile|short-tempered","socievole|sociable","estroverso|outgoing","amichevole|friendly","pigro|lazy","puntuale|punctual","preciso|precise, careful","creativo|creative","gentile|kind, polite","simpatico|likeable, nice"]},
+  persB: { name: "Personalità (2)", src: "lessico/personalita/", cards: [
+    "sincero|honest","coraggioso|brave","scherzoso|playful, jokey","ordinato|tidy","egoista|selfish","sveglio|sharp, bright","sportivo|sporty","allegro|cheerful","maleducato|rude","paziente|patient","insicuro|insecure","debole|weak","loquace|talkative","sensibile|sensitive","permaloso|touchy, easily offended","deciso|determined, decisive","intelligente|intelligent"]},
+  vestiti: { name: "Vestiti e meteo", src: "lessico/vestiti/", cards: [
+    "la felpa|sweatshirt","il maglione|jumper","l'impermeabile|raincoat","l'ombrello|umbrella","le scarpe da ginnastica|trainers","i pantaloncini|shorts","il costume da bagno|swimsuit","le ciabatte|flip-flops","gli occhiali da sole|sunglasses","la camicia|shirt","la sciarpa|scarf","il cappotto|coat","il berretto|woolly hat","i guanti|gloves","gli stivali|boots","la tuta|tracksuit","Che tempo fa?|What's the weather like?","Fa freddo.|It's cold.","Piove.|It's raining.","È nuvoloso.|It's cloudy.","C'è il sole.|It's sunny."]},
+  bar: { name: "Al bar e al ristorante", src: "dialoghi/al-ristorante/", cards: [
+    "Posso avere il conto?|Can I have the bill?","Cosa mi consiglia?|What do you recommend? (formal)","un'acqua frizzante|a sparkling water","Va forte.|It's very popular.","Sono da solo.|I'm on my own.","accomodarsi|to take a seat","Ecco a te.|Here you go. (informal)","il coperto|cover charge","lo scontrino|receipt","al banco|at the counter (standing)","un caffè macchiato|espresso with a dash of milk","il contorno|side dish","il primo / il secondo|first course / main course","Per me…|I'll have… (ordering)","Si può pagare con la carta?|Can I pay by card?","Siamo in quattro.|There are four of us.","da asporto|to take away"]},
+  connettivi: { name: "Connettivi", src: null, cards: [
+    "quindi|so, therefore","però|but, however","invece|instead, on the other hand","comunque|anyway, however","infatti|indeed, in fact","inoltre|furthermore","tuttavia|nevertheless","mentre|while","nonostante|despite","anzi|on the contrary, or rather","cioè|that is, I mean","insomma|in short, all in all","siccome|since, as (reason)","perciò|that's why","eppure|and yet","affinché|so that","purché|provided that","a meno che|unless"]},
+  casa: { name: "Casa e agenzia", src: "dialoghi/agenzia-immobiliare/", cards: [
+    "i metri quadrati|square metres","ristrutturato|renovated","gli infissi|window frames","gli impianti|building systems (wiring, plumbing…)","la cucina abitabile|eat-in kitchen","ben servito|well connected (shops, transport)","fare un'offerta|to make an offer","fissare una visita|to arrange a viewing","l'affitto|rent","il proprietario|owner, landlord","le spese condominiali|building service charges","la caparra|deposit","il trasloco|house move","il soggiorno|living room","il cortile|courtyard","ammobiliato|furnished"]},
+  viaggi: { name: "Viaggi e prenotazioni", src: "dialoghi/prenotazioni/", cards: [
+    "il binario|platform","obliterare il biglietto|to validate the ticket","andata e ritorno|return (ticket)","solo andata|one-way","in ritardo|late, delayed","la coincidenza|connection (train)","la carta d'imbarco|boarding pass","allacciare la cintura|to fasten the seatbelt","la cappelliera|overhead locker","il bagaglio a mano|hand luggage","atterrare|to land","decollare|to take off","disdire|to cancel (a booking)","lo sciopero|strike","la fermata|stop (bus, tram)","la biglietteria|ticket office"]},
+  colloquiali: { name: "Espressioni colloquiali", src: null, cards: [
+    "In bocca al lupo! — Crepi!|Good luck! — Thanks!","Non vedo l'ora.|I can't wait.","fare due chiacchiere|to have a chat","avere voglia di|to feel like (doing)","Meno male!|Thank goodness!","Magari!|I wish! / If only!","Figurati!|Don't mention it!","Ci mancherebbe!|Of course! / Not at all!","Ma dai!|No way! / Really?","Che peccato!|What a shame!","Non fa niente.|Never mind.","Mi raccomando!|Make sure you do! / Don't forget!","fare finta di|to pretend to","dare fastidio|to bother","Che ne dici?|What do you think? / How about it?","Boh.|Dunno.","prendere in giro|to tease, make fun of"]},
+  avanzate: { name: "Parole avanzate", src: "lessico/parole-avanzate/", cards: [
+    "effimero|ephemeral, short-lived","inequivocabile|unmistakable","l'empatia|empathy","ridondante|redundant","meticoloso|meticulous","la sinergia|synergy","la futilità|triviality, futility","evidenziare|to highlight","l'altruismo|altruism","la consapevolezza|awareness","sostenere|to argue, maintain (an opinion)","la dipendenza|addiction, dependence","svolgere|to carry out","rendersi conto|to realise","l'atteggiamento|attitude","bensì|but rather"]},
+  verbiprep: { name: "Verbi + preposizione", src: null, cards: [
+    "pensare a|to think about","riuscire a|to manage to","smettere di|to stop (doing)","cercare di|to try to","decidere di|to decide to","provare a|to try (doing)","abituarsi a|to get used to","innamorarsi di|to fall in love with","fidarsi di|to trust","lamentarsi di|to complain about","occuparsi di|to take care of","accorgersi di|to notice","dipendere da|to depend on","avere bisogno di|to need","avere paura di|to be afraid of","sognare di|to dream of","cominciare a|to begin to","finire di|to finish (doing)"]},
+  letture: { name: "Dalle letture", src: "letture/", cards: [
+    "ai piedi di|at the foot of","la pietra lavica|lava stone","il patrono / la patrona|patron saint","gli agrumi|citrus fruits","convivere con|to live with, coexist with","figlio unico|only child","di nascosto|secretly","spiacevole|unpleasant","affrontare|to confront, face","prendere coraggio|to pluck up courage","contare su|to count on","da remoto|remotely","la sfida|challenge","vivace|lively"]}
+};
+
+/* Exercises: fill = [question, "answer|alt", explanation?]  ·  choice = [question, [options], correctIndex, explanation?] */
+const DAYS = [
+{ n:1, topic:"Passato prossimo", short:"Passato prossimo", deck:"emozioni",
+  wiki:[["Passato prossimo","grammatica/passato-prossimo/"],["Verbo essere","grammatica/essere/"],["Verbo avere","grammatica/avere/"]],
+  theory:[
+    "<b>avere / essere + participio</b>: ho mangiato, sono andato.",
+    "<b>Essere</b> con i verbi di movimento e cambiamento (andare, venire, partire, nascere, diventare), con <i>stare, rimanere, piacere, costare</i> e con tutti i riflessivi (mi sono svegliato). Il participio concorda: <i>Maria è uscita</i>.",
+    "Participi irregolari da sapere a memoria: fatto, detto, preso, messo, visto, scritto, letto, aperto, chiuso, rimasto, venuto, nato, stato, vissuto, scelto, perso, chiesto, risposto, bevuto.",
+    "Con <b>lo / la / li / le</b> + avere il participio concorda: <i>Le chiavi? Le ho messe qui.</i>",
+    "Alcuni verbi cambiano ausiliare: <i>Ho finito il lavoro</i> (transitivo) / <i>Il film è finito</i> (intransitivo). Stesso con cominciare, passare."],
+  ex:[
+    ["Ieri sera io e Marco ___ (uscire) tardi.","siamo usciti"],
+    ["Maria ___ (nascere) a Napoli nel 1990.","è nata"],
+    ["Non ho ancora ___ (leggere) quel libro.","letto"],
+    ["Stamattina mi ___ (svegliarsi) alle sei.","sono svegliato|sono svegliata","Reflexive verbs always take essere."],
+    ["Quanto ___ (costare) la cena?","è costata","costare takes essere; la cena is feminine."],
+    ["Le chiavi? Le ___ (mettere) sul tavolo.","ho messe","With avere + le, the participle agrees: messe."],
+    ["Il film ___ alle dieci.",["ha finito","è finito","è finita"],1,"finire without an object takes essere; il film is masculine."],
+    ["Io ___ tutto il lavoro.",["ho finito","sono finito"],0,"With a direct object (il lavoro), finire takes avere."],
+    ["Che cosa vi ___ (dire) il professore?","ha detto"],
+    ["I ragazzi ___ (rimanere) a casa tutto il giorno.","sono rimasti"],
+    ["Ti ___ la pizza di ieri?",["è piaciuta","ha piaciuto","è piaciuto"],0,"piacere takes essere and agrees with the thing liked (la pizza)."],
+    ["Abbiamo ___ (scegliere) un ristorante vicino al mare.","scelto"]],
+  tr:[
+    ["Yesterday I went to the market and bought some fruit.","Ieri sono andato/a al mercato e ho comprato della frutta."],
+    ["We stayed at home because it rained all day.","Siamo rimasti a casa perché è piovuto (ha piovuto) tutto il giorno."],
+    ["Have you ever been to Sicily? (tu)","Sei mai stato/a in Sicilia?"],
+    ["She opened the window and closed the door.","Ha aperto la finestra e ha chiuso la porta."],
+    ["The lesson started at nine.","La lezione è cominciata alle nove."]],
+  dict:["Domenica scorsa siamo andati al mare con alcuni amici.","Non ho capito bene quello che hai detto.","Mia sorella è arrivata a Roma ieri sera.","Abbiamo mangiato una pizza buonissima vicino alla stazione."],
+  write:{ task:"Racconta il tuo ultimo fine settimana in Italia.", target:"passato prossimo con essere e con avere (almeno 8 verbi diversi)", words:"80–120" },
+  speak:["Cosa hai fatto ieri, dalla mattina alla sera?","Cosa hai mangiato oggi?","Qual è l'ultimo posto nuovo che hai visitato?","Perché hai deciso di imparare l'italiano?"],
+  mission:"Al bar ordina un caffè e racconta al barista una cosa che hai fatto ieri. Una frase al passato prossimo basta.",
+  extra:null },
+
+{ n:2, topic:"Imperfetto o passato prossimo?", short:"Imperfetto", deck:"persA",
+  wiki:[["Imperfetto","grammatica/imperfetto/"],["Lettura: Gabriele","letture/gabriele/"]],
+  theory:[
+    "<b>Imperfetto</b>: abitudini nel passato (<i>da bambino giocavo a calcio</i>), descrizioni (<i>era tardi, faceva freddo</i>), azioni in corso (<i>mentre leggevo…</i>).",
+    "<b>Passato prossimo</b>: un'azione conclusa, in un momento preciso (<i>ieri alle otto, all'improvviso, una volta</i>).",
+    "Lo schema classico: <i>Mentre cucinavo</i> (sfondo) <i>è suonato il telefono</i> (evento).",
+    "Irregolari: essere → ero, fare → facevo, dire → dicevo, bere → bevevo.",
+    "Con i modali: <i>dovevo partire</i> (era il piano, forse non sono partito) / <i>sono dovuto partire</i> (sono partito davvero)."],
+  ex:[
+    ["Da bambino ___ (andare) sempre in vacanza dai nonni.","andavo","A habit in the past → imperfetto."],
+    ["Mentre ___ (fare) la doccia, è andata via la luce.","facevo"],
+    ["Ieri ___ freddo e il cielo era grigio.",["ha fatto","faceva"],1,"Weather as background description → imperfetto."],
+    ["All'improvviso ___ a piovere.",["cominciava","ha cominciato"],1,"'All'improvviso' marks a single event → passato prossimo."],
+    ["Quando ero piccolo, ___ (essere) molto timido.","ero"],
+    ["Mentre leggevo, mio fratello ___ (guardare) la TV.","guardava","Two actions in progress at the same time → both imperfetto."],
+    ["Ieri sera ___ a letto alle undici.",["andavo","sono andato"],1],
+    ["Cosa ___ (dire) il cartello? Non l'ho letto.","diceva"],
+    ["Ogni estate ___ in Puglia.",["siamo andati","andavamo"],1,"'Ogni estate' = a repeated habit."],
+    ["Stavo uscendo quando ___ (arrivare) Luca.","è arrivato"],
+    ["Ieri ___ uscire, ma alla fine sono rimasto a casa.",["dovevo","sono dovuto"],0,"dovevo = the plan, which didn't happen."],
+    ["Gabriele non ___ (mangiare) molto quando era piccolo.","mangiava"]],
+  tr:[
+    ["When I was a child I lived in a small town.","Quando ero bambino/a abitavo (vivevo) in una piccola città."],
+    ["I was reading when you called me.","Leggevo (Stavo leggendo) quando mi hai chiamato."],
+    ["It was late and we were tired, so we went home.","Era tardi ed eravamo stanchi, quindi siamo tornati a casa."],
+    ["Every Sunday my grandmother made lasagne.","Ogni domenica mia nonna faceva le lasagne."],
+    ["Suddenly the phone rang.","All'improvviso è squillato il telefono."]],
+  dict:["Quando abitavo a Berlino, prendevo sempre la bicicletta.","Mentre aspettavo l'autobus, ho incontrato un vecchio amico.","Faceva caldo e la spiaggia era piena di gente.","Da piccola mia madre non mangiava mai le verdure."],
+  write:{ task:"Com'era la tua vita a dieci anni? Descrivi la casa, la scuola, gli amici e le tue abitudini. Poi racconta un episodio preciso di quell'anno.", target:"imperfetto per le descrizioni e le abitudini, passato prossimo per l'episodio", words:"100–130" },
+  speak:["Com'eri da bambino/a?","Cosa facevi d'estate quando eri piccolo/a?","Qual era il tuo cibo preferito da bambino/a?","Racconta una volta in cui hai avuto paura."],
+  mission:"Chiedi a una persona del posto (un barista, un negoziante): «Com'era questo quartiere una volta?». Ascolta e fai almeno una domanda in più.",
+  extra:["Rileggi «Gabriele» sul tuo sito. Nel paragrafo su quando era piccolo, sottolinea ogni imperfetto: perché l'autore lo usa lì?","letture/gabriele/"] },
+
+{ n:3, topic:"Trapassato prossimo", short:"Trapassato", deck:"persB",
+  wiki:[["Trapassato prossimo","grammatica/trapassato-prossimo/"]],
+  theory:[
+    "<b>Imperfetto di avere/essere + participio</b>: avevo mangiato, ero uscito/a.",
+    "Serve per un'azione passata successa <b>prima</b> di un'altra azione passata: <i>Quando sono arrivato, il treno era già partito.</i>",
+    "Va spesso con <b>già, non ancora, appena, mai</b>: <i>Non avevo mai visto il mare.</i>",
+    "Con essere il participio concorda: <i>Le ragazze erano già uscite.</i>"],
+  ex:[
+    ["Quando sono arrivato in stazione, il treno ___ (già / partire).","era già partito"],
+    ["Non avevo fame perché ___ (mangiare) da poco.","avevo mangiato"],
+    ["Marta era stanca perché la notte prima non ___ (dormire).","aveva dormito"],
+    ["Ho riconosciuto subito la casa in cui ___ (vivere) da bambino.","avevo vissuto|ero vissuto","vivere can take avere or essere."],
+    ["Quando l'ho chiamato, Luca ___ .",["è già uscito","era già uscito","usciva già"],1],
+    ["Gli studenti ___ (finire) il compito prima della fine della lezione.","avevano finito"],
+    ["Siamo tornati nel ristorante che ci ___ (consigliare) Anna.","aveva consigliato"],
+    ["Ieri ho visto un film che ___ già tre volte.",["ho visto","avevo visto","vedevo"],1],
+    ["Quando siamo arrivati noi, le ragazze ___ (andare) via da un'ora.","erano andate"],
+    ["Non sapevo che tu ___ in Italia prima.",["sei stato","eri stato","sei"],1]],
+  tr:[
+    ["When I got home, my flatmate had already made dinner.","Quando sono tornato/a a casa, il mio coinquilino aveva già preparato la cena."],
+    ["I had never seen the sea before that summer.","Non avevo mai visto il mare prima di quell'estate."],
+    ["She told me she had lost her keys.","Mi ha detto che aveva perso le chiavi."],
+    ["We had just gone out when it started to rain.","Eravamo appena usciti quando ha cominciato a piovere."],
+    ["They hadn't studied, so the exam went badly.","Non avevano studiato, quindi l'esame è andato male."]],
+  dict:["Quando sono arrivato al cinema, il film era già cominciato.","Non avevo mai mangiato una granita così buona.","Mi ha detto che aveva trovato un nuovo lavoro.","Eravamo appena entrati quando è arrivato il cameriere."],
+  write:{ task:"Racconta il tuo primo giorno in Italia. Cosa avevi immaginato prima di partire? Cosa avevi già organizzato? Cosa è successo davvero?", target:"trapassato prossimo insieme a passato prossimo e imperfetto", words:"100–130" },
+  speak:["Cosa avevi già fatto oggi prima delle nove?","Prima di venire in Italia, avevi già studiato l'italiano? Come?","Racconta una volta in cui sei arrivato/a tardi e qualcosa era già successo.","Qual è una cosa che non avevi mai fatto prima di quest'anno?"],
+  mission:"Racconta a qualcuno una cosa che avevi immaginato dell'Italia e che invece è diversa: «Pensavo che…, invece…».",
+  extra:null },
+
+{ n:4, topic:"Futuro semplice e anteriore", short:"Futuro", deck:"vestiti",
+  wiki:[["Futuro semplice","grammatica/futuro-semplice/"],["Futuro anteriore","grammatica/futuro-anteriore/"],["Il tempo (meteo)","lessico/tempo-meteo/"]],
+  theory:[
+    "Desinenze: <b>-erò, -erai, -erà, -eremo, -erete, -eranno</b> (-are e -ere), -irò per -ire.",
+    "Irregolari: sarò, avrò, andrò, farò, verrò, vorrò, potrò, dovrò, saprò, vedrò, vivrò, berrò, rimarrò.",
+    "Ortografia: cercare → cercherò, pagare → pagherò; cominciare → comincerò, mangiare → mangerò.",
+    "<b>Futuro di probabilità</b>: <i>Che ore sono? Saranno le tre.</i> (I guess it's three.)",
+    "<b>Futuro anteriore</b> (sarò/avrò + participio): un'azione futura che viene prima di un'altra. <i>Quando avrò finito, ti chiamerò.</i> Anche probabilità nel passato: <i>Sarà già uscito.</i>"],
+  ex:[
+    ["Domani ___ (andare) al mare con Giulia.","andrò"],
+    ["L'anno prossimo i miei genitori ___ (venire) a trovarmi.","verranno"],
+    ["Quando ___ (avere) più tempo, imparerò a cucinare.","avrò"],
+    ["Non so quanto costa: ___ (costare) circa venti euro.","costerà","Futuro di probabilità: a guess about the present."],
+    ["Stasera ti ___ (pagare) io la cena!","pagherò","-gare verbs add an h: pagherò."],
+    ["Appena ___ (finire) di lavorare, ti chiamerò.","avrò finito|finirò","Futuro anteriore is the textbook form; finirò is also heard in speech."],
+    ["Marco non risponde al telefono. ___ già a letto.",["Andrà","Sarà andato","Andava"],1,"A guess about something already done → futuro anteriore."],
+    ["Che ore sono? Non ho l'orologio… ___ le sei.",["Saranno","Sono state","Erano"],0],
+    ["Quando ___ (arrivare) a Roma, mi manderete un messaggio?","sarete arrivati|arriverete"],
+    ["Domani ___ (cominciare) un nuovo corso di italiano.","comincerò"],
+    ["Se piove, noi ___ (rimanere) a casa.","rimarremo"]],
+  tr:[
+    ["Next week I'll visit Florence with some friends.","La settimana prossima visiterò Firenze con alcuni amici."],
+    ["When I've finished this course, I'll speak better.","Quando avrò finito questo corso, parlerò meglio."],
+    ["Where's Anna? — She'll be at work. (guess)","Dov'è Anna? — Sarà al lavoro."],
+    ["We'll have to leave early.","Dovremo partire presto."],
+    ["I'll tell you everything as soon as I know.","Ti dirò tutto appena lo saprò."]],
+  dict:["Domani pioverà su tutta la costa adriatica.","Quando avrò finito di lavorare, andrò a fare una passeggiata.","Non so dov'è Luca, sarà ancora in ufficio.","Il prossimo anno vivrò in una città più piccola."],
+  write:{ task:"Come sarà la tua vita tra cinque anni? Dove vivrai, che lavoro farai, come parlerai l'italiano?", target:"futuro semplice, più almeno un futuro anteriore (quando avrò…, appena sarò…)", words:"100–130" },
+  speak:["Cosa farai questo fine settimana?","Dove sarai tra un anno?","Cosa farai appena avrai finito queste due settimane?","Secondo te, che tempo farà domani?"],
+  mission:"Chiedi a qualcuno: «Che tempo farà domani?» oppure «A che ora chiuderà stasera?». Ascolta bene il futuro nella risposta.",
+  extra:null },
+
+{ n:5, topic:"Condizionale e forma di cortesia", short:"Condizionale + Lei", deck:"bar",
+  wiki:[["Condizionale presente","grammatica/condizionale-presente/"],["Forma di cortesia (Lei)","grammatica/forma-di-cortesia/"],["Dialogo: in agenzia","dialoghi/agenzia-immobiliare/"]],
+  theory:[
+    "Stessa radice del futuro + <b>-ei, -esti, -ebbe, -emmo, -este, -ebbero</b>: parlerei, sarei, avrei, vorrei, potrei, dovrei, andrei, verrei.",
+    "Usi: cortesia (<i>Vorrei un caffè. Potrebbe…?</i>), desiderio (<i>Mi piacerebbe…</i>), consiglio (<i>Dovresti…</i>), notizia non confermata (<i>Il ministro sarebbe malato</i>).",
+    "<b>Lei</b> = 3ª persona singolare: <i>Lei è…, Le piace…?, il Suo nome</i>. Imperativo formale: scusi, senta, prenda, venga.",
+    "Frasi d'oro: <i>Mi saprebbe dire…? Le dispiacerebbe…? Sarebbe possibile…?</i>"],
+  ex:[
+    ["___ (volere) un cappuccino e un cornetto, per favore.","Vorrei"],
+    ["Al posto tuo, io ___ (prendere) il treno.","prenderei"],
+    ["Mi ___ (piacere) vivere al mare.","piacerebbe"],
+    ["Scusi, ___ (potere) ripetere più lentamente?","potrebbe"],
+    ["Tu ___ (dovere) dormire di più.","dovresti"],
+    ["Signora, ___ un caffè?",["vuoi","vuole","volete"],1,"Lei uses the 3rd person singular."],
+    ["Professore, ___ dispiace se apro la finestra?",["ti","Le","gli"],1],
+    ["Noi ___ (andare) volentieri a cena fuori, ma non abbiamo soldi.","andremmo","Double m in the noi form: andremmo."],
+    ["___, dov'è la fermata dell'autobus? (a uno sconosciuto)",["Scusa","Scusi","Scusate"],1],
+    ["Signor Rossi, di dove ___ (essere)?","è"],
+    ["Mi ___ (sapere) dire dov'è la farmacia più vicina?","saprebbe"],
+    ["Secondo i giornali, il ministro ___ (essere) malato.","sarebbe","Conditional for unconfirmed news."]],
+  tr:[
+    ["I'd like to book a table for two for tomorrow evening.","Vorrei prenotare un tavolo per due per domani sera."],
+    ["Could you help me, please? (Lei)","Potrebbe aiutarmi, per favore?"],
+    ["You should call your mother. (tu)","Dovresti chiamare tua madre."],
+    ["We would like to see the flat on Saturday.","Vorremmo (Ci piacerebbe) vedere l'appartamento sabato."],
+    ["Excuse me, do you know what time the museum closes? (Lei)","Scusi, sa a che ora chiude il museo?"]],
+  dict:["Scusi, potrebbe dirmi dov'è la stazione?","Mi piacerebbe passare un mese in Sardegna.","Al posto tuo non comprerei quella macchina.","Signora, Le dispiacerebbe chiudere la finestra?"],
+  write:{ task:"Scrivi un'email formale al proprietario di un appartamento in affitto: presentati, chiedi informazioni (prezzo, spese, zona) e proponi un giorno per la visita.", target:"condizionale di cortesia e forma di cortesia (Lei)", words:"90–120" },
+  speak:["Cosa ti piacerebbe fare questo fine settimana?","In quale città italiana vorresti vivere, e perché?","Che consiglio daresti a chi comincia a studiare l'italiano?","Fai finta di essere al ristorante: ordina un pasto completo con il condizionale."],
+  mission:"Oggi in ogni negozio o bar usa solo il condizionale e il Lei: «Vorrei…», «Potrebbe…?», «Mi saprebbe dire…?». Conta quante volte ci riesci.",
+  extra:["Rileggi il dialogo «In agenzia immobiliare» e cerca tutti i condizionali (interesserebbe, piacerebbe, sarei…).","dialoghi/agenzia-immobiliare/"] },
+
+{ n:6, topic:"Pronomi diretti e indiretti", short:"Pronomi", deck:"connettivi",
+  wiki:[["Pronomi diretti","grammatica/pronomi-diretti/"],["Pronomi indiretti","grammatica/pronomi-indiretti/"]],
+  theory:[
+    "<b>Diretti</b> (chi? che cosa?): mi, ti, lo, la, ci, vi, li, le. <i>Conosci Marco? Sì, lo conosco.</i>",
+    "<b>Indiretti</b> (a chi?): mi, ti, gli, le, ci, vi, gli. <i>Telefoni ad Anna? Sì, le telefono.</i>",
+    "Verbi con l'indiretto: piacere, telefonare, dire, chiedere, rispondere, dare, regalare, scrivere, mandare, sembrare.",
+    "Al passato il participio concorda con lo/la/li/le: <i>Giulia? L'ho vista.</i> Mai con gli indiretti: <i>Le ho telefonato.</i>",
+    "Con i modali due posizioni: <i>Lo voglio vedere = Voglio vederlo.</i>"],
+  ex:[
+    ["Conosci quella ragazza? Sì, ___ conosco bene.","la"],
+    ["Hai scritto a tuo fratello? Sì, ___ ho scritto ieri.","gli"],
+    ["Compri tu i biglietti? Sì, ___ compro io.","li"],
+    ["Cosa regali a tua madre? ___ regalo un libro.","Le"],
+    ["Hai visto le mie chiavi? No, non ___ .",["le ho visto","le ho viste","gli ho visti"],1,"Participle agrees with le (feminine plural)."],
+    ["Ho incontrato i miei amici e ___ ho detto la notizia.",["gli","li","le"],0,"dire a loro → gli (gli = a loro in everyday Italian)."],
+    ["Puoi chiamare Paolo? Sì, posso chiamar___ dopo.","lo"],
+    ["La pizza? ___ ho mangiata tutta!","L'"],
+    ["Hai telefonato alla nonna? Sì, ___ ho telefonato stamattina.",["l'","le","la"],1,"telefonare a qualcuno → indirect pronoun."],
+    ["Ragazzi, ___ aspetto davanti al bar.","vi"],
+    ["Maria, questo vestito non ___ sta bene.",["la","ti","lo"],1],
+    ["Ho comprato dei fiori e ___ ho messi in un vaso.","li"]],
+  tr:[
+    ["I don't know him, but I've seen him before.","Non lo conosco, ma l'ho già visto."],
+    ["Did you call Laura? — Yes, I phoned her yesterday.","Hai telefonato a Laura? — Sì, le ho telefonato ieri. (oppure: L'hai chiamata? — Sì, l'ho chiamata ieri.)"],
+    ["I wrote to them, but they didn't answer me.","Gli ho scritto, ma non mi hanno risposto."],
+    ["Do you like these shoes? I want to buy them.","Ti piacciono queste scarpe? Le voglio comprare. (Voglio comprarle.)"],
+    ["Can you help me?","Mi puoi aiutare? (Puoi aiutarmi?)"]],
+  dict:["Hai visto Giulia? Sì, l'ho vista ieri al mercato.","Gli ho chiesto un favore, ma non mi ha risposto.","Queste foto le ho fatte a Catania.","Ti piace questo quartiere? A me piace moltissimo."],
+  write:{ task:"Scrivi un messaggio a un amico italiano: racconti cosa hai comprato al mercato e a chi lo regalerai.", target:"almeno 6 pronomi diretti e indiretti (lo, la, li, le, gli, le…)", words:"80–110" },
+  speak:["Guardi la TV italiana? (rispondi con un pronome: Sì, la guardo…)","Quando hai chiamato i tuoi genitori l'ultima volta?","Cosa regali ai tuoi amici per il compleanno?","Hai già visitato i musei della tua città italiana?"],
+  mission:"Al mercato o al supermercato usa un pronome in ogni frase: «Questi li posso assaggiare?», «La prendo, grazie».",
+  extra:["Leggi «Catania» e trova le forme passive (è stata fondata, è stata conquistata). Chi ha fatto l'azione?","letture/catania/"] },
+
+{ n:7, topic:"Ripasso della settimana 1", short:"Ripasso", deck:"@review", review:true,
+  wiki:[["Grammatica: panoramica","grammatica/"]],
+  theory:[
+    "Oggi niente regole nuove. Prima apri la scheda <b>Errori</b> e rifai tutti gli esercizi sbagliati di questa settimana.",
+    "Poi controlla di saper spiegare a voce, senza guardare: quando si usa essere al passato prossimo; imperfetto o passato prossimo; a cosa serve il trapassato.",
+    "Ripeti a memoria 5 verbi irregolari al futuro e al condizionale (sarò/sarei, avrò/avrei, andrò/andrei, verrò/verrei, vorrò/vorrei).",
+    "Scegli 2 frasi dai tuoi testi di questa settimana e riscrivile più naturali."],
+  ex:[
+    ["L'anno scorso ___ (vivere) tre mesi a Bologna.","ho vissuto|sono vissuto|sono vissuta"],
+    ["Mentre ___ , mi ha chiamato Sara.",["ho cucinato","cucinavo"],1],
+    ["Quando sono arrivato, la festa ___ (finire).","era finita|era già finita"],
+    ["Quando ___ (finire) l'università, cercherò lavoro a Milano.","avrò finito|finirò"],
+    ["___ (volere) sapere quanto costa il biglietto.","Vorrei"],
+    ["Le chiavi? Non ___ trovo più!",["le","li","gli"],0],
+    ["Hai detto ai vicini del rumore? Sì, ___ ho detto tutto ieri.","gli|l'","dire a loro → gli."],
+    ["Signora, ___ piace questo vestito?",["ti","Le","La"],1],
+    ["Non so dov'è Paolo. ___ (essere) in palestra.","Sarà"],
+    ["Da piccola ___ (avere) paura del buio.","avevo"],
+    ["Ieri sera ___ due ore al telefono con mia sorella.",["parlavo","ho parlato"],1,"A closed amount of time (due ore) → passato prossimo."],
+    ["Tu ___ (dovere) provare la granita al pistacchio!","dovresti|devi"]],
+  tr:[
+    ["I had already eaten when they arrived.","Avevo già mangiato quando sono arrivati."],
+    ["When I was young I wanted to be a pilot.","Da giovane volevo fare il pilota."],
+    ["I'd like to see them again.","Vorrei rivederli. (Mi piacerebbe rivederli.)"],
+    ["Tomorrow I'll call her and tell her everything.","Domani la chiamerò e le dirò tutto."],
+    ["Excuse me, could you take a photo of us? (Lei)","Scusi, potrebbe farci una foto?"]],
+  dict:["Ieri sera, mentre tornavo a casa, ho incontrato la mia vicina.","Quando avrò finito questo libro, lo presterò a mio fratello.","Scusi, potrebbe dirmi a che ora parte l'ultimo treno?","Non l'avevo mai vista così felice."],
+  write:{ task:"Scrivi il diario della tua prima settimana di studio: cosa hai fatto, com'era, cosa avevi sottovalutato, cosa farai la settimana prossima.", target:"tutti i tempi della settimana: passato prossimo, imperfetto, trapassato, futuro, condizionale", words:"130–160" },
+  speak:["Racconta la tua settimana per due minuti, senza fermarti.","Cosa facevi di solito la sera a casa tua? E qui in Italia?","Cosa farai la settimana prossima?","Cosa vorresti migliorare nel tuo italiano?"],
+  mission:"Fai due chiacchiere di cinque minuti con qualcuno (barista, vicino, negoziante) senza passare all'inglese.",
+  extra:null },
+
+{ n:8, topic:"Pronomi combinati e imperativo", short:"Pronomi combinati", deck:"casa",
+  wiki:[["Pronomi combinati","grammatica/pronomi-combinati/"],["Imperativo","grammatica/imperativo/"]],
+  theory:[
+    "Indiretto + diretto: mi → <b>me</b>, ti → <b>te</b>, ci → <b>ce</b>, vi → <b>ve</b> (me lo, te la, ce li, ve le).",
+    "Gli e le diventano <b>glie-</b> e si attaccano: glielo, gliela, glieli, gliele, gliene.",
+    "Si mettono prima del verbo coniugato (<i>Te lo do</i>) ma si attaccano a infinito, gerundio e imperativo tu/noi/voi (<i>Voglio dartelo. Dammelo!</i>).",
+    "Imperativi brevi raddoppiano la consonante: da' → dammi, di' → dimmi, fa' → fammi (ma: dagli).",
+    "Con il Lei i pronomi vanno prima: <i>Me lo dia. Glielo porti.</i> Al passato il participio concorda: <i>La lettera? Gliel'ho data.</i>"],
+  ex:[
+    ["Mi presti la penna? Sì, ___ presto.","te la"],
+    ["Hai dato il libro a Marco? Sì, ___ ho dato.","gliel'|glielo"],
+    ["Ci porti i biglietti? Sì, ___ porto domani.","ve li"],
+    ["Quante mele vuoi? ___ dai tre, per favore?","Me ne"],
+    ["La verità? ___ (dire, tu, a me)!","Dimmela"],
+    ["Le foto per Giulia? ___ (mandare, tu) subito!","Mandagliele"],
+    ["La lettera per il direttore? ___ ho già spedita.",["Gliel'","Glielo","Gliela ho"],0,"gliela + ho → gliel'ho; participle agrees: spedita."],
+    ["Signora, il conto? ___ porto subito.",["Glielo","Le lo","Lo le"],0],
+    ["Ti lavi le mani? Sì, ___ lavo subito.","me le"],
+    ["Voglio regalare un orologio a mio padre. → Voglio ___ .",["regalarglielo","regalarlogli","glielo regalare"],0],
+    ["Dammi il sale! → ___ !","Dammelo"],
+    ["Signore, il passaporto? ___ (dare, Lei), per favore.","Me lo dia"]],
+  tr:[
+    ["Can you lend it to me? (la macchina)","Me la puoi prestare? (Puoi prestarmela?)"],
+    ["I'll tell him tomorrow. (it)","Glielo dico domani."],
+    ["Give it to me, please! (la borsa, tu)","Dammela, per favore!"],
+    ["I gave them to her. (le chiavi)","Gliele ho date."],
+    ["How many do you want? — Give me two.","Quanti ne vuoi? — Dammene due."]],
+  dict:["Il libro che mi hai chiesto te lo porto domani.","Gliel'ho detto mille volte, ma non mi ascolta.","Se ti serve la macchina, te la presto volentieri.","Mi dica pure, glielo spiego io."],
+  write:{ task:"Scrivi un dialogo in un negozio di vestiti (8–10 battute): il cliente chiede di provare delle cose, il commesso gliele porta.", target:"almeno 6 pronomi combinati (me lo, gliela, te li…) e un paio di imperativi", words:"90–120" },
+  speak:["Presti i tuoi libri agli amici? (Sì, glieli presto…)","Chi ti ha fatto l'ultimo regalo che hai ricevuto?","Spieghi la grammatica italiana ai tuoi amici?","Mi dai il tuo numero? (Rispondi: Te lo do…)"],
+  mission:"In un negozio prova a dire «Me lo può incartare?» o «Me la fa provare?». Al bar o in farmacia: «Me ne dà due?».",
+  extra:null },
+
+{ n:9, topic:"Ci e ne", short:"Ci e ne", deck:"viaggi",
+  wiki:[["Ci e ne","grammatica/ci-e-ne/"],["Verbi pronominali","grammatica/verbi-pronominali/"]],
+  theory:[
+    "<b>Ci</b> = in quel posto (<i>Vai a Roma? Sì, ci vado domani</i>) e = a questa cosa (<i>Ci penso io. Ci credi?</i>).",
+    "<b>Volerci</b> (ci vuole / ci vogliono = it takes) e <b>metterci</b> (ci metto dieci minuti = I take).",
+    "<b>Ne</b> = di questo / una quantità (<i>Quanti caffè bevi? Ne bevo tre</i>).",
+    "Con ne al passato il participio concorda con la quantità: <i>Ne ho mangiate due</i> (mele).",
+    "Ce n'è / ce ne sono. E i verbi pronominali: <b>farcela</b> (ce la faccio), <b>prendersela</b> (non te la prendere), <b>andarsene</b> (me ne vado)."],
+  ex:[
+    ["Sei mai stato a Venezia? Sì, ___ sono stato due volte.","ci"],
+    ["Quanti anni hai? ___ ho trentadue.","Ne"],
+    ["Quanto tempo ___ vuole per arrivare a Palermo?","ci"],
+    ["Per arrivare in centro io ___ venti minuti.",["ci metto","ci vuole","ne metto"],0,"metterci has a personal subject (io); volerci is impersonal."],
+    ["Quante pizze avete ordinato? ___ abbiamo ordinate quattro.","Ne"],
+    ["C'è ancora del pane? Sì, ___ un po'.",["ce n'è","ci sono","ce ne sono"],0],
+    ["Non ___ la faccio più, sono stanchissimo!","ce"],
+    ["È tardi, io me ne ___ (andare).","vado"],
+    ["Hai sentito la notizia? Cosa ___ pensi?",["ci","ne","lo"],1,"pensare di (opinion) → ne; pensare a (thinking about) → ci."],
+    ["Hai pensato al regalo per Marco? Sì, ___ ho pensato io.",["ci","ne","gli"],0],
+    ["Quante sigarette fumi? Non ___ fumo nessuna.","ne"],
+    ["Ho fatto molte foto e ___ ho mandate alcune a mia madre.","ne"]],
+  tr:[
+    ["It takes two hours to get to Naples.","Ci vogliono due ore per arrivare a Napoli."],
+    ["How many brothers do you have? — I have two.","Quanti fratelli hai? — Ne ho due."],
+    ["I can't make it, it's too difficult!","Non ce la faccio, è troppo difficile!"],
+    ["Don't worry, I'll take care of it.","Non ti preoccupare, ci penso io."],
+    ["We're leaving, it's late.","Ce ne andiamo, è tardi."]],
+  dict:["Al mercato c'erano tante arance e ne ho comprate sei.","Quanto ci metti ad arrivare in ufficio?","Non ti preoccupare, ce la facciamo.","Sono stato a Taormina e ci voglio tornare presto."],
+  write:{ task:"Descrivi il tuo quartiere in Italia: cosa c'è, quanti negozi ci sono, quanto ci metti ad arrivare in centro, dove ci vai volentieri.", target:"ci e ne almeno 6 volte (ci vado, ce ne sono, ne compro, ci metto…)", words:"90–120" },
+  speak:["Quanto ci metti per arrivare in centro?","Quanti caffè bevi al giorno?","Sei mai stato/a a Roma? Ci torneresti?","Cosa ne pensi della cucina della tua regione italiana?"],
+  mission:"Al mercato: «Quanto costano? Me ne dà mezzo chilo» oppure «Ce ne sono ancora?». Usa ne almeno due volte.",
+  extra:null },
+
+{ n:10, topic:"Congiuntivo presente", short:"Congiuntivo", deck:"colloquiali",
+  wiki:[["Congiuntivo presente","grammatica/congiuntivo-presente/"],["Lettura: tecnologia","letture/tecnologia/"]],
+  theory:[
+    "-are: parli, parli, parli, parliamo, parliate, parlino. -ere/-ire: prenda, senta… (con -isc-: finisca).",
+    "Irregolari: sia, abbia, vada, faccia, venga, possa, voglia, debba, sappia, dica, stia, dia, esca.",
+    "Si usa dopo opinione, dubbio, desiderio, emozione (<i>penso che, non credo che, voglio che, sono contento che</i>), dopo <i>è importante / è meglio / bisogna che</i>, e dopo <i>benché, affinché, prima che, purché, a meno che</i>.",
+    "Stesso soggetto → <b>di + infinito</b>: <i>Penso di partire</i>, non <i>penso che io parta</i>.",
+    "Certezza → indicativo: <i>So che è vero. Sono sicuro che viene.</i>"],
+  ex:[
+    ["Penso che Marco ___ (avere) ragione.","abbia"],
+    ["È importante che tu ___ (dormire) abbastanza.","dorma"],
+    ["Voglio che voi ___ (venire) alla festa.","veniate"],
+    ["So che Luca ___ in Italia.",["sia","è"],1,"sapere expresses certainty → indicativo."],
+    ["Spero che domani ___ (fare) bel tempo.","faccia"],
+    ["Penso ___ domani.",["che io parta","di partire"],1,"Same subject → di + infinitive."],
+    ["Benché ___ (essere) stanca, Anna va in palestra.","sia"],
+    ["Ti do le chiavi affinché tu ___ (potere) entrare.","possa"],
+    ["Non credo che loro ___ (sapere) la verità.","sappiano"],
+    ["Sono contento che tu ___ qui.",["sei","sia","fossi"],1],
+    ["Prima che tu ___ (uscire), chiudi la finestra.","esca"],
+    ["Bisogna che tutti ___ (finire) il lavoro entro venerdì.","finiscano"]],
+  tr:[
+    ["I think it's too expensive.","Penso che sia troppo caro."],
+    ["I hope you like the gift. (tu)","Spero che il regalo ti piaccia."],
+    ["It's possible that it will rain tomorrow.","È possibile che domani piova."],
+    ["Although I study a lot, I still make many mistakes.","Benché studi molto, faccio ancora molti errori."],
+    ["My parents want me to come home for Christmas.","I miei genitori vogliono che io torni a casa per Natale."]],
+  dict:["Penso che questo ristorante sia il migliore della città.","Spero che tu possa venire con noi domenica.","Benché faccia freddo, la gente mangia il gelato.","È meglio che prendiate il treno delle otto."],
+  write:{ task:"Cosa pensi della vita in Italia dopo queste settimane? Esprimi opinioni e almeno un dubbio.", target:"congiuntivo presente dopo penso che, mi sembra che, è strano che, non sono sicuro che…", words:"100–130" },
+  speak:["Cosa pensi che sia la cosa più difficile dell'italiano?","Cosa vuoi che cambi nella tua vita quest'anno?","È importante che i bambini imparino le lingue? Perché?","Cosa speri che succeda questo mese?"],
+  mission:"Chiedi un'opinione: «Secondo Lei, qual è il posto migliore per mangiare qui?». Poi commenta con «Penso che…» + congiuntivo.",
+  extra:["Leggi «Tecnologia e vita quotidiana» e trova i congiuntivi (possa, vengano, rimangano). Che parola li introduce?","letture/tecnologia/"] },
+
+{ n:11, topic:"Congiuntivo imperfetto e periodo ipotetico", short:"Se…", deck:"avanzate",
+  wiki:[["Congiuntivo imperfetto","grammatica/congiuntivo-imperfetto/"],["Periodo ipotetico","grammatica/periodo-ipotetico/"]],
+  theory:[
+    "Forme: parlassi, parlassi, parlasse, parlassimo, parlaste, parlassero. Irregolari: fossi, dessi, stessi, facessi, dicessi, bevessi.",
+    "Si usa quando il verbo principale è al passato o al condizionale: <i>Pensavo che fosse chiuso. Vorrei che tu venissi.</i>",
+    "<b>Tipo 1</b> (reale): se + presente → presente/futuro. <i>Se piove, resto a casa.</i>",
+    "<b>Tipo 2</b> (possibile): se + congiuntivo imperfetto → condizionale presente. <i>Se avessi tempo, viaggerei.</i>",
+    "<b>Tipo 3</b> (irreale, passato): se + congiuntivo trapassato → condizionale passato. <i>Se avessi studiato, avrei passato l'esame.</i> Mai il condizionale dopo <i>se</i>!"],
+  ex:[
+    ["Se ___ (avere) più soldi, comprerei una casa al mare.","avessi"],
+    ["Se fossi in te, ___ (accettare) quel lavoro.","accetterei"],
+    ["Pensavo che tu ___ (essere) già partito.","fossi"],
+    ["Vorrei che voi ___ (restare) ancora un po'.","restaste"],
+    ["Se ___ bel tempo domani, andiamo al mare.",["fa","facesse","farebbe"],0,"A real possibility → tipo 1, presente."],
+    ["Se ___ studiato di più, avrei passato l'esame.",["avrei","avessi","avevo"],1],
+    ["Se ___ (sapere, io) la risposta, te la direi.","sapessi"],
+    ["Mi sembrava che Luca ___ (stare) male.","stesse"],
+    ["Se tu mi ___ (dare) una mano, finiremmo prima.","dessi"],
+    ["Se avessi saputo dello sciopero, ___ il taxi.",["prendevo","avrei preso","prenderei"],1,"Tipo 3 → condizionale passato. 'Prendevo' is heard in speech but is informal."],
+    ["Era necessario che tutti ___ (fare) la loro parte.","facessero"],
+    ["Magari ___ (potere, io) restare in Italia per sempre!","potessi"]],
+  tr:[
+    ["If I had more time, I'd learn to cook.","Se avessi più tempo, imparerei a cucinare."],
+    ["If I were you, I wouldn't say anything.","Se fossi in te, non direi niente."],
+    ["I wish you were here.","Vorrei che tu fossi qui."],
+    ["If we had left earlier, we wouldn't have missed the train.","Se fossimo partiti prima, non avremmo perso il treno."],
+    ["I thought she spoke German.","Pensavo che parlasse tedesco."]],
+  dict:["Se avessi più tempo libero, leggerei molti più libri.","Vorrei che tu venissi a trovarmi in Sicilia.","Se fossimo partiti prima, saremmo già arrivati.","Pensavo che il museo fosse aperto anche il lunedì."],
+  write:{ task:"Se potessi vivere un anno in qualsiasi città italiana, quale sceglieresti e cosa faresti? Poi scrivi una cosa che avresti fatto diversamente all'inizio del tuo viaggio.", target:"periodo ipotetico di tipo 2 e almeno uno di tipo 3", words:"100–130" },
+  speak:["Se vincessi alla lotteria, cosa faresti?","Se potessi parlare con un personaggio storico, chi sceglieresti?","Cosa avresti fatto diversamente se avessi imparato l'italiano prima?","Se fossi sindaco della tua città, cosa cambieresti?"],
+  mission:"Chiedi a qualcuno: «Se fosse un turista qui per un giorno, cosa visiterebbe?». Ripeti la risposta per controllare di aver capito.",
+  extra:null },
+
+{ n:12, topic:"Pronomi relativi e preposizioni", short:"Relativi", deck:"verbiprep",
+  wiki:[["Pronomi relativi","grammatica/pronomi-relativi/"],["Preposizioni","grammatica/preposizioni/"]],
+  theory:[
+    "<b>che</b> = soggetto o oggetto: <i>il ragazzo che parla, il film che ho visto</i>.",
+    "<b>cui</b> dopo una preposizione: <i>la città in cui vivo, l'amico a cui ho scritto, il motivo per cui</i>. <b>il cui / la cui</b> = whose.",
+    "<b>quello che / ciò che</b> = what: <i>Fai quello che vuoi.</i>",
+    "Luoghi: <b>a</b> + città (a Roma), <b>in</b> + paese/regione (in Italia, in Sicilia). Mezzi: in treno, in macchina, ma a piedi. <b>da</b> + persona: vado dal medico, da Marco.",
+    "<b>da</b> + tempo = since/for: <i>Vivo qui da tre mesi</i> (presente!)."],
+  ex:[
+    ["La ragazza ___ ho conosciuto ieri è di Palermo.",["che","cui","in cui"],0],
+    ["Questa è la casa in ___ sono nato.",["che","cui","quale"],1],
+    ["Il motivo per ___ sono venuto in Italia è la lingua.","cui"],
+    ["Non ho capito ___ hai detto. (what)","quello che|ciò che|quel che"],
+    ["Abito ___ Bologna da due mesi.","a"],
+    ["Quest'estate vado ___ Sicilia.","in"],
+    ["Domani devo andare ___ dentista.","dal"],
+    ["Il libro è ___ tavolo. (su + il)","sul"],
+    ["Studio italiano ___ tre mesi.","da"],
+    ["Vado al lavoro ___ .",["in piedi","a piedi","con i piedi"],1],
+    ["L'amico ___ ti ho parlato arriva domani.",["che","di cui","cui"],1,"parlare di qualcuno → di cui."],
+    ["Ho lasciato le chiavi ___ borsa. (in + la)","nella"],
+    ["È una persona ___ opinioni rispetto molto.",["che","le cui","cui le"],1,"il cui / la cui / i cui / le cui = whose, agreeing with the thing owned."]],
+  tr:[
+    ["The city where I live is very beautiful.","La città in cui (dove) vivo è molto bella."],
+    ["The woman I spoke to works at the bank.","La donna con cui ho parlato lavora in banca."],
+    ["I've been living in Italy for two months.","Vivo in Italia da due mesi."],
+    ["Tonight we're going to Marco's by bus.","Stasera andiamo da Marco in autobus."],
+    ["That's not what I wanted.","Non è quello che volevo."]],
+  dict:["Il ristorante in cui abbiamo mangiato ieri è vicino al porto.","Vivo a Bologna da tre mesi e studio all'università.","La persona di cui ti ho parlato arriva domani.","Prendo il treno per Firenze e poi vado da mia zia."],
+  write:{ task:"Descrivi tre persone o luoghi che hai conosciuto in Italia.", target:"frasi relative (che, in cui, con cui, di cui, il cui) e preposizioni giuste", words:"90–120" },
+  speak:["Descrivi la città in cui vivi adesso.","Chi è la persona con cui parli di più in italiano?","Qual è il motivo per cui sei venuto/a in Italia?","Descrivi il posto in cui ti senti più a casa."],
+  mission:"Chiedi indicazioni per arrivare a un posto, poi ripeti: «Quindi prendo la strada che…, dopo la piazza in cui…?».",
+  extra:null },
+
+{ n:13, topic:"Comparativi, bene/buono/bravo, partitivo", short:"Comparativi", deck:"letture",
+  wiki:[["Comparativi e superlativi","grammatica/comparativi-superlativi/"],["Bene, buono, bravo","grammatica/bene-buono-bravo/"],["Avverbi","grammatica/avverbi/"],["Partitivo","grammatica/partitivo/"]],
+  theory:[
+    "<b>più/meno … di</b> davanti a nomi e pronomi (<i>Roma è più grande di Napoli</i>); <b>che</b> tra due aggettivi, verbi, quantità o preposizioni (<i>più bello che utile, più in estate che in inverno</i>).",
+    "Irregolari: buono → migliore / ottimo; cattivo → peggiore / pessimo; bene → meglio; male → peggio.",
+    "Superlativo relativo: <i>il più bello della città</i>. Assoluto: <i>bellissimo, molto bello</i>.",
+    "<b>buono</b> = qualità di una cosa (aggettivo); <b>bene</b> = come? (avverbio); <b>bravo</b> = abilità di una persona.",
+    "Avverbi in -mente: lento → lentamente, facile → facilmente. Partitivo (some): del, dello, della, dei, degli, delle."],
+  ex:[
+    ["Milano è più grande ___ Bologna.","di"],
+    ["Mi piace più leggere ___ guardare la TV.","che"],
+    ["Questa pizza è ___ di quella di ieri.",["migliore","meglio","più meglio"],0,"Pizza is a noun → adjective migliore (or più buona)."],
+    ["Oggi mi sento ___ di ieri.",["migliore","meglio"],1,"sentirsi + adverb → meglio."],
+    ["Questo è il film ___ bello che ho mai visto.","più"],
+    ["Marco parla italiano molto ___ .",["buono","bene","bravo"],1],
+    ["Che ___ questo tiramisù!",["buono","bene","bravo"],0],
+    ["Sei stato molto ___ all'esame!",["bene","buono","bravo"],2],
+    ["Parla ___ (lento), per favore.","lentamente|più lentamente"],
+    ["Ho comprato ___ uova. (some)","delle"],
+    ["Vorrei ___ zucchero nel caffè. (some)","dello|un po' di"],
+    ["Il concerto era ___ (bello, superlativo assoluto).","bellissimo"],
+    ["La situazione è ___ di quanto pensassi.",["peggio","peggiore"],1,"situazione is a noun → adjective peggiore."]],
+  tr:[
+    ["This is the best gelato in the city.","Questo è il gelato più buono (il miglior gelato) della città."],
+    ["Italian is easier than German.","L'italiano è più facile del tedesco."],
+    ["You speak Italian better than me!","Parli italiano meglio di me!"],
+    ["I bought some bread and some cheese.","Ho comprato del pane e del formaggio."],
+    ["She's a very good doctor.","È una dottoressa bravissima (molto brava)."]],
+  dict:["Questo caffè è molto più buono di quello di ieri.","Parli italiano sempre meglio, complimenti!","Ho comprato delle arance e dello zucchero al supermercato.","È il posto più bello che abbia mai visto."],
+  write:{ task:"Confronta la città italiana in cui ti trovi con la tua città d'origine: clima, cibo, persone, ritmo di vita.", target:"comparativi (più… di/che, meglio, migliore) e almeno un superlativo", words:"100–130" },
+  speak:["Qual è il piatto più buono che hai mangiato in Italia?","È meglio vivere in città o in campagna?","Chi cucina meglio nella tua famiglia?","Confronta l'inverno qui con l'inverno a casa tua."],
+  mission:"In un negozio o al bar chiedi un confronto: «Qual è più buono, questo o quello?» oppure «Qual è il più venduto?».",
+  extra:null },
+
+{ n:14, topic:"Ripasso finale", short:"Ripasso finale", deck:"@review", review:true,
+  wiki:[["Grammatica: panoramica","grammatica/"]],
+  theory:[
+    "Apri la scheda <b>Errori</b> e rifai tutto quello che è ancora aperto. Se un errore torna due volte, scrivilo nel tuo sito.",
+    "Ripassa le carte difficili nella scheda <b>Vocaboli</b>.",
+    "Rileggi i testi scritti in questi 14 giorni: confronta il primo e l'ultimo. Cosa sai fare adesso che prima non sapevi?",
+    "Decidi il piano per le prossime settimane: quali 2 argomenti vuoi rivedere?"],
+  ex:[
+    ["Il gelato? ___ ho comprato per te.","Te l'|Te lo"],
+    ["Quanti libri hai letto quest'anno? ___ ho letti dieci.","Ne"],
+    ["Credo che lui ___ (avere) trent'anni.","abbia"],
+    ["Se ___ (potere, io), verrei con voi.","potessi"],
+    ["La città ___ sono nato è piccola.",["che","in cui","di cui"],1],
+    ["Questo vino è ___ di quello francese.",["meglio","migliore"],1],
+    ["Quanto tempo ___ metti per venire qui?","ci"],
+    ["La storia? ___ (raccontare, tu, a me)!","Raccontamela"],
+    ["Spero che ___ bel tempo domenica.",["fa","faccia","farà"],1],
+    ["Se avessi saputo dello sciopero, ___ (partire) un giorno prima.","sarei partito|sarei partita"],
+    ["Non ce la ___ (fare, io) più!","faccio"],
+    ["Hai mandato le foto alla nonna? Sì, ___ ho mandate.",["gliele","glieli","le"],0],
+    ["Vivo in Italia ___ un mese.","da"],
+    ["Benché ___ (piovere), siamo usciti.","piovesse"]],
+  tr:[
+    ["If I had known it, I would have told you.","Se l'avessi saputo, te l'avrei detto."],
+    ["I think he's right, but I'm not sure.","Penso che abbia ragione, ma non ne sono sicuro/a."],
+    ["The friend I live with is from Turin.","L'amico con cui vivo è di Torino."],
+    ["Give it to him tomorrow. (la lettera, tu)","Dagliela domani."],
+    ["It's the most beautiful city I've ever seen.","È la città più bella che abbia mai visto."]],
+  dict:["Se avessi più tempo, rimarrei in Italia un altro mese.","Penso che tu abbia fatto molti progressi.","Il quartiere in cui vivo è tranquillo e ben servito.","Quante lingue parli? Ne parlo tre, ma l'italiano è la mia preferita."],
+  write:{ task:"Scrivi una lettera a te stesso/a di due settimane fa: cosa hai imparato, cosa è stato più difficile, cosa avresti fatto diversamente, cosa farai adesso.", target:"almeno cinque tempi e modi diversi, inclusi congiuntivo e periodo ipotetico", words:"150–200" },
+  speak:["Racconta queste due settimane per tre minuti.","Cosa avresti fatto diversamente?","Cosa pensi che sia cambiato nel tuo italiano?","Quali sono i tuoi obiettivi per il prossimo mese?"],
+  mission:"Una conversazione di dieci minuti con un italiano. Dopo, scrivi tre parole nuove che hai sentito.",
+  extra:null }
+];
+
+/* The daily blocks: id, title, minutes, core (part of the 60-minute version) */
+const BLOCKS = [
+  { id:"vocab",  title:"Vocaboli",          min:10, core:true,  what:"Flashcard: il mazzo del giorno più le carte da ripassare." },
+  { id:"theory", title:"Ripasso della regola", min:10, core:true,  what:"La regola in breve, poi la pagina del tuo sito." },
+  { id:"ex",     title:"Esercizi",          min:20, core:true,  what:"Completa e scegli. Correzione immediata." },
+  { id:"tr",     title:"Traduzione",        min:10, core:false, what:"Dall'inglese all'italiano, con correzione." },
+  { id:"dict",   title:"Dettato",           min:10, core:false, what:"Ascolta e scrivi quello che senti." },
+  { id:"write",  title:"Scrittura",         min:15, core:true,  what:"Un testo breve, corretto da Claude in rosso e blu." },
+  { id:"speak",  title:"Parlato",           min:10, core:true,  what:"Rispondi ad alta voce, un minuto per domanda." },
+  { id:"mission",title:"Missione in città", min:0,  core:false, what:"Una piccola sfida dal vivo, in Italia." }
+];
+
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const LS_KEY = "quaderno-italiano-v1";
+const fresh = () => ({ v:1, start:"2026-11-16", days:{}, cards:{}, errs:{}, notes:[], fixed:0, updated:0 });
+
+/* ---------- state & saving (this device first, then synced to your account) ---------- */
+let S = fresh();
+try { const raw = localStorage.getItem(LS_KEY); if (raw) S = Object.assign(fresh(), JSON.parse(raw)); } catch {}
+const D = n => (S.days[n] ||= { done:{}, ex:{}, tr:{}, trc:{}, dict:{}, write:"", wfb:null });
+
+let dbRef = null, pushTimer = null, chain = Promise.resolve(), sync = "local";
+function save(){
+  S.updated = Date.now();
+  try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch {}
+  clearTimeout(pushTimer); pushTimer = setTimeout(push, 1500);
+  renderStats();
+}
+function push(){
+  if (!dbRef) return;
+  const body = JSON.parse(JSON.stringify(S));
+  chain = chain.then(() => dbRef.set(body)).then(() => setSync("synced"), () => setSync("error"));
+}
+function setSync(s){ sync = s; renderStats(); }
+async function connect(){
+  if (!window.claude?.use) return;
+  try {
+    const [db, user] = await Promise.all([claude.use("db"), claude.use("user")]);
+    if (!db || !user) return;
+    const id = await user.id(); if (!id) return;
+    dbRef = db.doc("data/users/" + id + "/quaderno");
+    const snap = await dbRef.get();
+    const remote = snap.exists ? snap.data() : null;
+    if (remote && (remote.updated || 0) > (S.updated || 0)) {
+      S = Object.assign(fresh(), JSON.parse(JSON.stringify(remote)));
+      try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch {}
+      render();
+    } else if ((S.updated || 0) > (remote?.updated || 0)) push();
+    setSync("synced");
+  } catch { setSync("error"); }
+}
+
+/* ---------- capabilities: Claude for corrections, a voice for listening ---------- */
+let samplerP = null, ttsP = null;
+function getSampler(){ return samplerP ||= (async () => { try { return window.claude?.use ? await claude.use("sample") : null; } catch { return null; } })(); }
+function getTTS(){
+  return ttsP ||= (async () => {
+    try { const t = window.claude?.use ? await claude.use("tts") : null;
+      if (t) return { speak: (txt, rate) => t.speak(txt, { language:"it-IT", rate }).catch(() => {}) }; } catch {}
+    if ("speechSynthesis" in window) return { speak: (txt, rate) => new Promise(res => {
+      const u = new SpeechSynthesisUtterance(txt); u.lang = "it-IT"; u.rate = rate;
+      const v = speechSynthesis.getVoices().find(v => (v.lang || "").toLowerCase().startsWith("it")); if (v) u.voice = v;
+      u.onend = u.onerror = res; speechSynthesis.cancel(); speechSynthesis.speak(u); }) };
+    return null;
+  })();
+}
+getSampler().then(s => { document.body.dataset.ai = s ? "yes" : "no"; });
+getTTS().then(t => { document.body.dataset.audio = t ? "yes" : "no"; });
+async function say(text, rate = 1){ const t = await getTTS(); if (t) t.speak(text, rate); }
+function aiError(e){
+  const c = e && e.code;
+  if (c === "not_granted") return "Hai scelto di non usare Claude da questa pagina. Puoi riattivarlo dal menu Permessi dell'artifact.";
+  if (c === "rate_limited") return "Troppe richieste in poco tempo. Riprova tra un minuto.";
+  if (c === "cancelled") return "Correzione annullata.";
+  return "La correzione non è riuscita. Riprova tra poco.";
+}
+
+/* ---------- dates & progress ---------- */
+const MS = 864e5;
+const parseD = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+const dateOf = n => { const d = parseD(S.start); d.setDate(d.getDate() + n - 1); return d; };
+const fmtD = d => d.toLocaleDateString("it-IT", { weekday:"short", day:"numeric", month:"short" });
+const todayN = () => { const t = new Date(); t.setHours(0,0,0,0); return Math.round((t - parseD(S.start)) / MS) + 1; };
+const STUDY = BLOCKS.filter(b => b.id !== "mission");
+const CORE = BLOCKS.filter(b => b.core).map(b => b.id);
+const dayPct = n => { const d = S.days[n]; return d ? STUDY.filter(b => d.done[b.id]).length / STUDY.length : 0; };
+const dayFull = n => { const d = S.days[n]; return !!d && CORE.every(id => d.done[id]); };
+const minutes = () => Object.values(S.days).reduce((a, d) => a + BLOCKS.reduce((m, b) => m + (d.done?.[b.id] ? b.min : 0), 0), 0);
+const openErrs = () => Object.keys(S.errs).length + S.notes.length;
+
+/* ---------- answer checking ---------- */
+const norm = s => String(s).toLowerCase().replace(/[’‘`´]/g, "'").replace(/\s*'\s*/g, "'").replace(/\s+/g, " ").trim().replace(/[.!?,;:]+$/, "").trim();
+const bare = s => norm(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+function grade(given, ans){
+  const g = norm(given); if (!g) return null;
+  const alts = ans.split("|");
+  if (alts.some(a => norm(a) === g)) return "ok";
+  if (alts.some(a => bare(a) === bare(g))) return "near";
+  return "wrong";
+}
+const words = s => String(s).toLowerCase().replace(/[’‘`´]/g, "'").replace(/[.,!?;:«»"()—–-]/g, " ").replace(/'/g, "' ").split(/\s+/).filter(Boolean);
+const wcount = s => String(s).trim().split(/\s+/).filter(Boolean).length;
+
+/* ---------- views ---------- */
+let view = { k:"plan" };
+function route(){
+  const h = decodeURIComponent(location.hash.slice(1)); let m;
+  if (h === "piano") view = { k:"plan" };
+  else if ((m = h.match(/^giorno-(\d+)$/))) view = { k:"day", n: Math.min(14, Math.max(1, +m[1])) };
+  else if (h === "vocaboli") view = { k:"vocab" };
+  else if (h === "errori") view = { k:"err" };
+  else { const t = todayN(); view = t >= 1 && t <= 14 ? { k:"day", n:t } : { k:"plan" }; }
+  player = null; errSnap = null;
+  render(); window.scrollTo(0, 0);
+}
+function render(){
+  renderStats(); renderTabs();
+  const app = $("#app");
+  app.innerHTML = view.k === "day" ? dayView(view.n) : view.k === "vocab" ? vocabView() : view.k === "err" ? errView() : planView();
+  if (player) drawPlayer();
+}
+function renderStats(){
+  const t = todayN(); const done = DAYS.filter(d => dayFull(d.n)).length;
+  const syncTxt = sync === "synced" ? "Sincronizzato con il tuo account" : sync === "error" ? "Salvato solo su questo dispositivo" : "Salvato su questo dispositivo";
+  $("#stats").innerHTML =
+    (t >= 1 && t <= 14 ? `<span>Oggi è il giorno <b>${t}</b> di 14</span>` : t < 1 ? `<span>Si comincia ${esc(fmtD(dateOf(1)))}</span>` : `<span>Piano finito</span>`) +
+    `<span><b>${done}</b>/14 giorni completati</span><span><b>${minutes()}</b> minuti di studio</span><span class="sync">${syncTxt}</span>`;
+}
+function renderTabs(){
+  const t = todayN(); const n = t >= 1 && t <= 14 ? t : (view.k === "day" ? view.n : 1);
+  const cur = k => view.k === k ? ' aria-current="page"' : "";
+  const e = openErrs();
+  $("#tabs").innerHTML = `<a href="#piano"${cur("plan")}>Piano</a><a href="#giorno-${view.k === "day" ? view.n : n}"${cur("day")}>${view.k === "day" ? "Giorno " + view.n : "Oggi"}</a><a href="#vocaboli"${cur("vocab")}>Vocaboli</a><a href="#errori"${cur("err")}>Errori${e ? `<span class="pill">${e}</span>` : ""}</a>`;
+}
+
+/* ----- plan ----- */
+function planView(){
+  const t = todayN();
+  const tile = d => {
+    const p = dayPct(d.n);
+    return `<a class="tile${d.n === t ? " today" : ""}${dayFull(d.n) ? " full" : ""}" href="#giorno-${d.n}">
+      <span class="d"><span>Giorno ${d.n}</span><span>${esc(fmtD(dateOf(d.n)))}</span></span>
+      ${d.n === t ? '<span class="tag">Oggi</span>' : d.review ? '<span class="tag">Ripasso</span>' : ""}
+      <span class="t">${esc(d.topic)}</span>
+      <span class="bar" title="${Math.round(p*100)}% fatto"><i style="width:${p*100}%"></i></span></a>`;
+  };
+  return `<section class="panel intro">
+    <span class="eyebrow">Il piano</span>
+    <h2>Due settimane, un'ora o un'ora e mezza al giorno</h2>
+    <p>Ogni giorno ripassa un argomento della tua wiki e lo usa in sei modi diversi: riconoscerlo, completarlo, tradurlo, sentirlo, scriverlo e dirlo ad alta voce. Gli errori finiscono nella scheda <b>Errori</b> e tornano nei giorni di ripasso (giorno 7 e 14).</p>
+    <ol class="daytype">${BLOCKS.map(b => `<li><b>${b.core ? '<span class="star" title="Versione corta">★</span> ' : ""}${esc(b.title)}</b>${b.min ? b.min + " min · " : ""}${esc(b.what)}</li>`).join("")}</ol>
+    <p class="muted" style="font-size:.88rem">Giornata completa ≈ 85 minuti. Con poco tempo fai solo i blocchi con ★ (≈ 65 minuti). La missione si fa fuori casa, quando capita.</p>
+    <div class="row"><label for="start" class="muted">Primo giorno del piano</label><input type="date" id="start" class="btn small" value="${esc(S.start)}"></div>
+  </section>
+  <section class="week"><h2>Settimana 1 · i tempi verbali</h2><div class="tiles">${DAYS.slice(0,7).map(tile).join("")}</div></section>
+  <section class="week"><h2>Settimana 2 · pronomi, congiuntivo e frasi complesse</h2><div class="tiles">${DAYS.slice(7).map(tile).join("")}</div></section>`;
+}
+
+/* ----- day ----- */
+function dayView(n){
+  const d = DAYS[n-1], st = D(n);
+  const blocks = BLOCKS.map((b, i) => {
+    const body = BODY[b.id](d, st);
+    const done = !!st.done[b.id];
+    return `<section class="block${done ? " isdone" : ""}" id="b-${b.id}">
+      <div class="bhead"><span class="bnum">${b.id === "mission" ? "+" : i + 1}</span>
+        <div class="btitle"><h2>${b.core ? '<span class="star" title="Fa parte della versione corta">★</span> ' : ""}${esc(b.title)}</h2><p>${esc(b.what)}</p></div>
+        <span class="mins">${b.min ? b.min + " min" : "dal vivo"}</span>
+        <button class="check" data-act="done" data-n="${n}" data-b="${b.id}" aria-pressed="${done}" aria-label="Segna ${esc(b.title)} come fatto">✓</button></div>
+      <div class="bbody">${body}</div></section>`;
+  }).join("");
+  return `<nav class="daynav">${n > 1 ? `<a href="#giorno-${n-1}">← Giorno ${n-1}</a>` : "<span></span>"}${n < 14 ? `<a href="#giorno-${n+1}">Giorno ${n+1} →</a>` : "<span></span>"}</nav>
+  <section class="dayhead">
+    <span class="eyebrow">Giorno ${n} di 14 · ${esc(fmtD(dateOf(n)))}</span>
+    <h1>${esc(d.topic)}</h1>
+    <div class="chips"><span class="muted" style="font-size:.85rem">Sul tuo sito:</span>${d.wiki.map(([l,p]) => `<a class="chip" href="${WIKI + p}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>
+  </section>${blocks}`;
+}
+
+const BODY = {
+  vocab(d){
+    if (d.deck === "@review") {
+      const pool = reviewPool(d.n);
+      return `<p>Oggi niente parole nuove: ripassi le <b>${pool.length}</b> carte che non sono ancora sicure, da tutti i mazzi visti finora.</p>
+        <div class="row"><button class="btn primary" data-act="fc-start" data-mode="day" data-n="${d.n}">Inizia il ripasso</button></div><div id="player"></div>`;
+    }
+    const deck = DECKS[d.deck], rev = dueCards(d.n);
+    return `<p>Mazzo del giorno: <b>${esc(deck.name)}</b> (${deck.cards.length} carte)${rev.length ? `, più <b>${rev.length}</b> carte da ripassare dei giorni scorsi` : ""}.${deck.src ? ` <a href="${WIKI + deck.src}" target="_blank" rel="noopener">Pagina sul tuo sito ↗</a>` : " Parole nuove, utili per il livello B1."}</p>
+      <div class="row"><button class="btn primary" data-act="fc-start" data-mode="day" data-n="${d.n}">Inizia le flashcard</button></div><div id="player"></div>`;
+  },
+  theory(d){
+    return `<ul class="theory">${d.theory.map(t => `<li>${t}</li>`).join("")}</ul>
+      <p class="muted" style="margin:0;font-size:.9rem">Poi apri la pagina sul tuo sito e rileggi gli esempi ad alta voce: ${d.wiki.map(([l,p]) => `<a href="${WIKI + p}" target="_blank" rel="noopener">${esc(l)}</a>`).join(", ")}.</p>
+      ${d.extra ? `<p class="note">Lettura extra: ${esc(d.extra[0])} <a href="${WIKI + d.extra[1]}" target="_blank" rel="noopener">Apri ↗</a></p>` : ""}`;
+  },
+  ex(d, st){
+    const done = Object.values(st.ex).filter(r => r.r).length, good = Object.values(st.ex).filter(r => r.r === "ok" || r.r === "near").length;
+    return `<p class="muted" style="margin:0;font-size:.9rem">Scrivi la risposta e premi Invio. Gli accenti contano: un errore solo di accento è segnato in blu.</p>
+      <ol class="items">${d.ex.map((it, i) => itemHTML("d", d.n, i, it, st.ex[i])).join("")}</ol>
+      <div class="row"><span class="score" id="exscore">${done ? `${good} su ${d.ex.length} giuste` : `${d.ex.length} esercizi`}</span>${done ? `<button class="btn small" data-act="reset-ex" data-n="${d.n}">Ricomincia</button>` : ""}</div>`;
+  },
+  tr(d, st){
+    return `<div style="display:grid;gap:10px">${d.tr.map(([en, it], i) => {
+      const fb = st.trc[i];
+      return `<div class="tr-item"><span class="en">${i+1}. ${esc(en)}</span>
+        <input class="line" id="tr-${d.n}-${i}" data-tr="${d.n}:${i}" value="${esc(st.tr[i] || "")}" placeholder="In italiano…" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <div id="trfb-${d.n}-${i}">${trFeedback(fb)}</div>
+        <details><summary class="muted" style="font-size:.85rem;cursor:pointer">Soluzione modello</summary><span class="model">${esc(it)}</span></details></div>`;
+    }).join("")}</div>
+    <div class="row ai-only"><button class="btn primary" data-act="ai-tr" data-n="${d.n}">Correggi con Claude</button><span class="muted" id="trstatus" style="font-size:.85rem"></span></div>
+    <p class="no-ai note" style="margin:0">La correzione con Claude non è disponibile in questa finestra. Confronta con la soluzione modello: se la tua frase è diversa ma ti sembra giusta, probabilmente lo è.</p>`;
+  },
+  dict(d, st){
+    return `<p class="no-audio note" style="margin:0">L'audio non è disponibile in questo browser. Fai così: apri il testo, leggilo ad alta voce due volte, chiudilo e scrivilo a memoria.</p>
+    <div style="display:grid;gap:10px">${d.dict.map((s, i) => {
+      const r = st.dict[i];
+      return `<div class="dict-item"><div class="row"><b>${i+1}.</b>
+          <button class="btn small audio-only" data-act="say" data-n="${d.n}" data-i="${i}" data-rate="1">▶ Ascolta</button>
+          <button class="btn small audio-only" data-act="say" data-n="${d.n}" data-i="${i}" data-rate="0.75">Più lento</button></div>
+        <input class="line" id="dict-${d.n}-${i}" data-dict="${d.n}:${i}" value="${esc(r?.g || "")}" placeholder="Scrivi quello che senti…" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <div class="row"><button class="btn small" data-act="dict-check" data-n="${d.n}" data-i="${i}">Controlla</button><span class="muted" style="font-size:.85rem">o premi Invio</span></div>
+        <div id="dictfb-${d.n}-${i}">${r ? dictDiff(s, r.g) : ""}</div>
+        <details class="no-audio"><summary class="muted" style="font-size:.85rem;cursor:pointer">Mostra il testo</summary>${esc(s)}</details></div>`;
+    }).join("")}</div>`;
+  },
+  write(d, st){
+    const w = d.write;
+    return `<div><p style="margin:0 0 4px"><b>${esc(w.task)}</b></p><p class="muted" style="margin:0;font-size:.9rem">Usa: ${esc(w.target)}. Lunghezza: ${esc(w.words)} parole. Scrivi senza dizionario, poi fai correggere.</p></div>
+      <textarea class="write" id="write-${d.n}" data-write="${d.n}" placeholder="Scrivi qui…" spellcheck="false">${esc(st.write)}</textarea>
+      <div class="row"><span class="muted" id="wc-${d.n}" style="font-size:.85rem;font-variant-numeric:tabular-nums">${wcount(st.write)} parole</span>
+        <span style="flex:1"></span>
+        <button class="btn primary ai-only" data-act="ai-write" data-n="${d.n}">Correggi con Claude</button></div>
+      <p class="no-ai note" style="margin:0">La correzione con Claude non è disponibile in questa finestra. Copia il testo in una chat con Claude e chiedi: «Correggi il mio testo e spiega gli errori».</p>
+      <div id="wfb-${d.n}">${writeFeedback(st.wfb)}</div>`;
+  },
+  speak(d){
+    return `<p class="muted" style="margin:0;font-size:.9rem">Rispondi ad alta voce per un minuto intero, senza fermarti. Se puoi, registrati con il telefono e riascoltati: senti dove esiti?</p>
+      <ul class="qs">${d.speak.map((q, i) => `<li><span>${esc(q)}</span><button class="btn small timer" data-act="timer" id="tm-${i}">1:00</button></li>`).join("")}</ul>`;
+  },
+  mission(d){
+    return `<p class="mission">${esc(d.mission)}</p><p class="muted" style="margin:0;font-size:.85rem">Quando l'hai fatta, segnala con ✓ qui sopra. Annota una parola nuova che hai sentito.</p>`;
+  }
+};
+
+/* ----- exercise items (shared by the day view and the Errori view) ----- */
+function itemHTML(ctx, n, i, it, res){
+  const isMC = Array.isArray(it[1]);
+  const r = res?.r, cls = r ? ` class="${r}"` : "";
+  const data = `data-ctx="${ctx}" data-n="${n}" data-i="${i}"`;
+  let q, fb = "";
+  if (isMC) {
+    const [qq, opts, ok, x] = it;
+    q = `${esc(qq).replace("___", "<b>___</b>")}<div class="opts">${opts.map((o, k) => {
+      const c = r ? (k === ok ? " right" : (res.g === k ? " chosen-wrong" : "")) : "";
+      return `<button class="opt${c}" data-act="mc" ${data} data-o="${k}"${r ? " disabled" : ""}>${esc(o)}</button>`;
+    }).join("")}</div>`;
+    if (r === "ok") fb = `<span class="hand pen-green">giusto!</span>${x ? `<span class="muted">${esc(x)}</span>` : ""}`;
+    if (r === "wrong") fb = `<span class="hand pen-red">no</span><span>→ <b>${esc(opts[ok])}</b></span>${x ? `<span class="muted">${esc(x)}</span>` : ""}`;
+  } else {
+    const [qq, ans, x] = it;
+    const alts = ans.split("|"), size = Math.max(5, ...alts.map(a => a.length)) + 2;
+    const input = `<input class="fill" id="in-${ctx}-${n}-${i}" ${data} size="${size}" value="${esc(res?.g || "")}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Risposta ${i+1}"${r ? " readonly" : ""}>`;
+    const parts = esc(qq).split("___");
+    q = parts.length > 1 ? parts[0] + input + parts.slice(1).join("___") : esc(qq) + " " + input;
+    if (!r) q += ` <button class="btn small" data-act="check" ${data}>Controlla</button>`;
+    if (r === "ok") fb = `<span class="hand pen-green">giusto!</span>${alts.length > 1 ? `<span class="muted">Anche: ${esc(alts.filter(a => norm(a) !== norm(res.g)).join(" / "))}</span>` : ""}`;
+    if (r === "near") fb = `<span class="hand pen-blue">attento agli accenti</span><span>→ <b>${esc(alts[0])}</b></span>`;
+    if (r === "wrong") fb = `<span class="hand pen-red">no</span><span>→ <b>${esc(alts.join(" / "))}</b></span>${x ? `<span class="muted">${esc(x)}</span>` : ""}`;
+  }
+  return `<li${cls} id="li-${ctx}-${n}-${i}"><div class="q">${q}</div>${fb ? `<div class="fb-line">${fb}</div>` : ""}</li>`;
+}
+function answer(ctx, n, i, given, r){
+  const key = `d${n}_${i}`, it = DAYS[n-1].ex[i];
+  if (ctx === "d") {
+    const st = D(n); st.ex[i] = { r, g: given };
+    if (r === "wrong") S.errs[key] = { t: Date.now(), c: (S.errs[key]?.c || 0) + 1 };
+    if (Object.keys(st.ex).length === DAYS[n-1].ex.length) st.done.ex = true;
+  } else {
+    errSnap[key] = { r, g: given };
+    if (r !== "wrong") { delete S.errs[key]; S.fixed = (S.fixed || 0) + 1; }
+    else S.errs[key] = { t: Date.now(), c: (S.errs[key]?.c || 0) + 1 };
+  }
+  save();
+  const li = $(`#li-${ctx}-${n}-${i}`);
+  if (li) li.outerHTML = itemHTML(ctx, n, i, it, ctx === "d" ? D(n).ex[i] : errSnap[key]);
+  if (ctx === "d") {
+    const st = D(n), vals = Object.values(st.ex);
+    const sc = $("#exscore"); if (sc) sc.textContent = `${vals.filter(v => v.r !== "wrong").length} su ${DAYS[n-1].ex.length} giuste`;
+    if (st.done.ex) markDoneUI("ex", true);
+    const next = $(`#in-d-${n}-${i+1}`); if (next && r) next.focus();
+  }
+  renderTabs();
+}
+function checkFill(el){
+  const { ctx, n, i } = el.dataset; const it = DAYS[n-1].ex[i];
+  const r = grade(el.value, it[1]); if (!r) { el.focus(); return; }
+  answer(ctx, +n, +i, el.value.trim(), r);
+}
+function markDoneUI(b, on){
+  const sec = $("#b-" + b); if (!sec) return;
+  sec.classList.toggle("isdone", on); const c = sec.querySelector(".check"); if (c) c.setAttribute("aria-pressed", on);
+}
+
+/* ----- translation feedback ----- */
+function trFeedback(fb){
+  if (!fb) return "";
+  if (fb.ok) return `<span class="hand pen-green">giusto!</span> ${fb.nota ? `<span class="muted" style="font-size:.88rem">${esc(fb.nota)}</span>` : ""}`;
+  return `<div style="font-size:.92rem"><span class="hand pen-red">correzione</span> <b class="pen-red">${esc(fb.corretta)}</b>${fb.nota ? `<div class="muted">${esc(fb.nota)}</div>` : ""}</div>`;
+}
+async function aiTranslations(n){
+  const d = DAYS[n-1], st = D(n), status = $("#trstatus"), btn = $('[data-act="ai-tr"]');
+  const todo = d.tr.map(([en, it], i) => ({ n: i+1, en, modello: it, studente: (st.tr[i] || "").trim() })).filter(x => x.studente);
+  if (!todo.length) { status.textContent = "Scrivi almeno una traduzione."; return; }
+  const sample = await getSampler(); if (!sample) return;
+  btn.disabled = true; status.textContent = "Claude sta correggendo…";
+  const prompt = `Sei un insegnante di italiano madrelingua. Correggi le traduzioni dall'inglese all'italiano di uno studente di livello B1 che vive in Italia.
+Per ogni frase hai l'originale inglese, una soluzione modello (non l'unica possibile) e la risposta dello studente. Accetta qualsiasi traduzione corretta e naturale, anche se diversa dal modello. Ignora maiuscole e punteggiatura finale.
+Rispondi SOLO con JSON valido in questo formato:
+{"risultati":[{"n":1,"ok":true,"corretta":"la frase dello studente corretta, cambiando il meno possibile","nota":"one short sentence in English explaining the main mistake; empty string if perfect"}]}
+
+${JSON.stringify(todo)}`;
+  try {
+    const out = await sample.json(prompt, { modelTier: "quick" });
+    for (const r of (out?.risultati || [])) {
+      const i = r.n - 1; if (!d.tr[i]) continue;
+      st.trc[i] = { ok: !!r.ok, corretta: String(r.corretta || ""), nota: String(r.nota || "") };
+      if (!r.ok && r.corretta) addNote(n, st.tr[i], r.corretta, r.nota, "traduzione");
+      const box = $(`#trfb-${n}-${i}`); if (box) box.innerHTML = trFeedback(st.trc[i]);
+    }
+    st.done.tr = true; markDoneUI("tr", true); save(); status.textContent = "";
+  } catch (e) { status.textContent = aiError(e); }
+  btn.disabled = false;
+}
+
+/* ----- dictation ----- */
+function dictDiff(target, given){
+  const tw = words(target), gw = words(given).map(w => bare(w)), gExact = words(given);
+  const m = tw.length, k = gw.length, L = Array.from({ length: m+1 }, () => new Array(k+1).fill(0));
+  for (let a = m-1; a >= 0; a--) for (let b = k-1; b >= 0; b--) L[a][b] = bare(tw[a]) === gw[b] ? L[a+1][b+1] + 1 : Math.max(L[a+1][b], L[a][b+1]);
+  const marks = []; let a = 0, b = 0;
+  while (a < m) {
+    if (b < k && bare(tw[a]) === gw[b]) { marks.push(tw[a] === gExact[b].replace(/'$/, "'") || norm(tw[a]) === norm(gExact[b]) ? ["", tw[a]] : ["acc", tw[a]]); a++; b++; }
+    else if (b < k && L[a][b+1] >= L[a+1][b]) b++;
+    else { marks.push(["miss", tw[a]]); a++; }
+  }
+  const ok = marks.filter(x => x[0] === "").length;
+  const html = marks.map(([c, w]) => `<span${c ? ` class="${c}"` : ""}>${esc(w.replace(/' $/, "'"))}</span>`).join(" ").replace(/' /g, "'");
+  const all = ok === tw.length && k === tw.length;
+  return `<div class="diff">${all ? '<span class="hand pen-green">perfetto!</span> ' : `<span class="score">${ok}/${tw.length}</span> `}${html}</div>`;
+}
+function checkDict(n, i){
+  const el = $(`#dict-${n}-${i}`); if (!el || !el.value.trim()) return;
+  const st = D(n); st.dict[i] = { g: el.value.trim() };
+  $(`#dictfb-${n}-${i}`).innerHTML = dictDiff(DAYS[n-1].dict[i], el.value);
+  if (Object.keys(st.dict).length === DAYS[n-1].dict.length) { st.done.dict = true; markDoneUI("dict", true); }
+  save();
+}
+
+/* ----- writing ----- */
+function writeFeedback(fb){
+  if (!fb) return "";
+  const errs = (fb.errori || []);
+  return `<div class="fb">
+    <div class="row"><span class="hand pen-red">Correzione</span>${fb.livello ? `<span class="muted" style="font-size:.85rem">Livello stimato del testo: <b>${esc(fb.livello)}</b></span>` : ""}</div>
+    <p class="corrected">${esc(fb.corretto)}</p>
+    ${errs.length ? `<ol class="errs">${errs.map(e => `<li class="${e.tipo === "grave" ? "grave" : "lieve"}"><s>${esc(e.sbagliato)}</s> → <b>${esc(e.giusto)}</b> <span class="muted">${esc(e.spiegazione)}</span></li>`).join("")}</ol>
+      <p class="legend">Come a scuola: <span class="pen-red">rosso</span> = errore grave, <span class="pen-blue">blu</span> = errore lieve. Gli errori sono salvati nella scheda Errori.</p>` : `<p><span class="hand pen-green">Nessun errore, bravo!</span></p>`}
+    ${fb.bene ? `<p><b>Cosa funziona:</b> ${esc(fb.bene)}</p>` : ""}
+    ${fb.consiglio ? `<p><b>Per la prossima volta:</b> ${esc(fb.consiglio)}</p>` : ""}
+  </div>`;
+}
+let writeCtl = null;
+async function aiWrite(n){
+  const d = DAYS[n-1], st = D(n), box = $(`#wfb-${n}`), btn = $('[data-act="ai-write"]');
+  const text = (st.write || "").trim();
+  if (wcount(text) < 15) { box.innerHTML = `<p class="note" style="margin:0">Scrivi almeno qualche frase (${esc(d.write.words)} parole) prima di chiedere la correzione.</p>`; return; }
+  const sample = await getSampler(); if (!sample) return;
+  if (writeCtl) writeCtl.abort(); writeCtl = new AbortController();
+  btn.disabled = true; box.innerHTML = `<p class="muted" style="margin:0">Claude sta leggendo il tuo testo… (può volerci mezzo minuto)</p>`;
+  const prompt = `Sei un insegnante di italiano madrelingua, gentile ma preciso. Lo studente ha livello B1 e vive in Italia.
+Compito: "${d.write.task}"
+Obiettivo grammaticale: ${d.write.target}.
+Testo dello studente:
+"""
+${text}
+"""
+Correggi il testo cambiando il meno possibile, così che resti suo ma diventi corretto e naturale.
+Rispondi SOLO con JSON valido in questo formato:
+{"corretto":"il testo completo corretto","errori":[{"sbagliato":"parole originali","giusto":"parole corrette","tipo":"grave","spiegazione":"one short sentence in English"}],"livello":"A2, B1, B1+ o B2","bene":"una frase in italiano semplice su cosa funziona","consiglio":"un consiglio concreto in italiano semplice per il prossimo testo"}
+"grave" = errore di grammatica o di significato; "lieve" = accento, ortografia o parola poco naturale. Al massimo 12 errori, i più importanti per primi.`;
+  try {
+    const out = await sample.json(prompt, { signal: writeCtl.signal });
+    st.wfb = { corretto: String(out?.corretto || ""), errori: Array.isArray(out?.errori) ? out.errori.slice(0, 12).map(e => ({ sbagliato: String(e.sbagliato || ""), giusto: String(e.giusto || ""), tipo: e.tipo === "grave" ? "grave" : "lieve", spiegazione: String(e.spiegazione || "") })) : [], livello: String(out?.livello || ""), bene: String(out?.bene || ""), consiglio: String(out?.consiglio || "") };
+    st.wfb.errori.forEach(e => addNote(n, e.sbagliato, e.giusto, e.spiegazione, "scrittura"));
+    st.done.write = true; markDoneUI("write", true); save();
+    box.innerHTML = writeFeedback(st.wfb);
+  } catch (e) { box.innerHTML = `<p class="note" style="margin:0">${esc(aiError(e))}</p>`; }
+  btn.disabled = false;
+}
+function addNote(n, wrong, right, why, kind){
+  if (!wrong || !right || norm(wrong) === norm(right)) return;
+  if (S.notes.some(x => norm(x.w) === norm(wrong) && norm(x.r) === norm(right))) return;
+  S.notes.unshift({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), n, w: String(wrong), r: String(right), x: String(why || ""), k: kind });
+  S.notes = S.notes.slice(0, 150);
+}
+
+/* ----- flashcards ----- */
+const cardsOf = key => DECKS[key].cards.map((c, i) => { const [it, en] = c.split("|"); return { id: `${key}_${i}`, it, en, deck: key }; });
+const decksBefore = n => DAYS.filter(x => x.n < n && x.deck[0] !== "@").map(x => x.deck);
+const dueCards = n => decksBefore(n).flatMap(cardsOf).filter(c => S.cards[c.id] != null && S.cards[c.id] <= 2).sort((a, b) => S.cards[a.id] - S.cards[b.id]).slice(0, 12);
+function reviewPool(n){
+  const all = decksBefore(n).flatMap(cardsOf);
+  let p = all.filter(c => (S.cards[c.id] ?? 0) <= 2);
+  if (p.length < 15) p = all.slice().sort((a, b) => (S.cards[a.id] ?? 0) - (S.cards[b.id] ?? 0)).slice(0, 30);
+  return p.slice(0, 40);
+}
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+let player = null;
+function startPlayer(mode, arg){
+  let q, label, n = null;
+  if (mode === "day") { n = +arg; const d = DAYS[n-1]; q = d.deck === "@review" ? reviewPool(n) : [...cardsOf(d.deck), ...dueCards(n)]; label = d.deck === "@review" ? "Ripasso" : DECKS[d.deck].name; }
+  else if (mode === "deck") { q = cardsOf(arg); label = DECKS[arg].name; }
+  else { q = Object.keys(DECKS).flatMap(cardsOf).filter(c => S.cards[c.id] === 1); label = "Carte difficili"; }
+  if (!q.length) { player = { done: true, empty: true, label }; drawPlayer(); return; }
+  player = { mode, n, label, q: shuffle(q), i: 0, show: false, yes: 0, no: 0, again: new Set(), dir: player?.dir || "en" };
+  drawPlayer();
+}
+function drawPlayer(){
+  const box = $("#player"); if (!box || !player) return;
+  const p = player;
+  if (p.empty) { box.innerHTML = `<p class="empty">Nessuna carta in questo gruppo, per ora.</p>`; return; }
+  if (p.done) {
+    box.innerHTML = `<div class="fc"><p class="hand pen-green" style="font-size:2rem;margin:0">Finito!</p><p class="meta">${p.yes} sapute · ${p.no} da ripassare</p>
+      <div class="row"><button class="btn" data-act="fc-close">Chiudi</button></div></div>`;
+    return;
+  }
+  const c = p.q[p.i], front = p.dir === "en" ? c.en : c.it, back = p.dir === "en" ? c.it : c.en;
+  box.innerHTML = `<div class="fc">
+    <div class="row"><span class="meta">${esc(p.label)} · ${p.i + 1}/${p.q.length}</span><button class="btn small" data-act="fc-dir">${p.dir === "en" ? "Inglese → italiano" : "Italiano → inglese"}</button></div>
+    <div class="card"><div class="front">${esc(front)}</div>${p.show ? `<div class="back">${esc(back)}</div>` : ""}</div>
+    ${p.show ? `<div class="row"><button class="btn small audio-only" data-act="say-card">▶ Pronuncia</button></div>
+      <div class="row"><button class="btn" data-act="fc-no" style="color:var(--red)">Non ancora</button><button class="btn primary" data-act="fc-yes">Lo so</button></div>`
+      : `<button class="btn primary" data-act="fc-flip">Mostra la risposta</button><p class="meta" style="margin:0">Prima dilla ad alta voce, poi gira la carta.</p>`}
+  </div>`;
+}
+function fcAnswer(yes){
+  const p = player, c = p.q[p.i];
+  if (yes) { S.cards[c.id] = Math.min(5, (S.cards[c.id] ?? 1) + 1); p.yes++; }
+  else { S.cards[c.id] = 1; p.no++; if (!p.again.has(c.id)) { p.again.add(c.id); p.q.push(c); } }
+  p.i++; p.show = false;
+  if (p.i >= p.q.length) { p.done = true; if (p.mode === "day") { D(p.n).done.vocab = true; markDoneUI("vocab", true); } }
+  save(); drawPlayer();
+}
+
+/* ----- vocab view ----- */
+function vocabView(){
+  const hard = Object.values(S.cards).filter(b => b === 1).length;
+  return `<section class="panel" style="display:grid;gap:12px"><span class="eyebrow">Vocaboli</span><h2>Tutti i mazzi</h2>
+    <p style="margin:0" class="muted">Una carta è “sicura” quando l'hai saputa almeno due volte di fila. Le carte che non sapevi tornano nei giorni successivi.</p>
+    <div class="row"><button class="btn primary" data-act="fc-start" data-mode="hard"${hard ? "" : " disabled"}>Ripassa le carte difficili (${hard})</button></div>
+    <div id="player"></div></section>
+    <div class="decks">${Object.entries(DECKS).map(([k, d]) => {
+      const cs = cardsOf(k), sure = cs.filter(c => (S.cards[c.id] ?? 0) >= 3).length, seen = cs.filter(c => S.cards[c.id] != null).length;
+      const day = DAYS.find(x => x.deck === k);
+      return `<div class="deck"><span class="eyebrow">${day ? "Giorno " + day.n : ""}</span><h3>${esc(d.name)}</h3>
+        <span class="bar"><i style="width:${sure / cs.length * 100}%"></i></span>
+        <span class="muted" style="font-size:.82rem">${sure} sicure · ${seen} viste · ${cs.length} in tutto</span>
+        <div class="row"><button class="btn small" data-act="fc-start" data-mode="deck" data-k="${k}">Studia</button>${d.src ? `<a class="chip" href="${WIKI + d.src}" target="_blank" rel="noopener">Sul sito ↗</a>` : ""}</div></div>`;
+    }).join("")}</div>`;
+}
+
+/* ----- errors view ----- */
+let errSnap = null;
+function errView(){
+  if (!errSnap) errSnap = Object.fromEntries(Object.keys(S.errs).map(k => [k, null]));
+  const keys = Object.keys(errSnap).sort((a, b) => { const [, an, ai] = a.match(/d(\d+)_(\d+)/), [, bn, bi] = b.match(/d(\d+)_(\d+)/); return an - bn || ai - bi; });
+  const items = keys.map(k => { const [, n, i] = k.match(/d(\d+)_(\d+)/); return itemHTML("e", +n, +i, DAYS[n-1].ex[i], errSnap[k]).replace("<li", `<li title="Giorno ${n}"`); }).join("");
+  return `<section class="panel" style="display:grid;gap:12px"><span class="eyebrow">Errori</span><h2>Il tuo quaderno degli errori</h2>
+    <p style="margin:0" class="muted">Qui finisce tutto quello che hai sbagliato. Un esercizio sparisce quando lo rifai giusto. Esercizi corretti finora: <b>${S.fixed || 0}</b>.</p></section>
+  <section class="block"><div class="bhead"><div class="btitle"><h2>Esercizi da rifare</h2><p>${Object.keys(S.errs).length} aperti</p></div></div>
+    <div class="bbody">${keys.length ? `<ol class="items">${items}</ol>` : `<p class="empty">Nessun esercizio sbagliato. Bene così!</p>`}</div></section>
+  <section class="block"><div class="bhead"><div class="btitle"><h2>Dai tuoi testi e dalle traduzioni</h2><p>Errori trovati da Claude. Rileggili ad alta voce nella forma corretta.</p></div></div>
+    <div class="bbody">${S.notes.length ? `<ul class="notes">${S.notes.map(x => `<li><div><s class="muted">${esc(x.w)}</s> → <b class="pen-red">${esc(x.r)}</b>${x.x ? `<div class="muted" style="font-size:.85rem">${esc(x.x)}</div>` : ""}<div class="muted" style="font-size:.75rem">Giorno ${x.n} · ${esc(x.k)}</div></div><button class="btn small" data-act="note-del" data-id="${esc(x.id)}">Imparato</button></li>`).join("")}</ul>` : `<p class="empty">Ancora niente. Gli errori dei testi corretti da Claude appariranno qui.</p>`}</div></section>`;
+}
+
+/* ---------- events ---------- */
+let timers = {};
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-act]"); if (!el) return;
+  const a = el.dataset.act, n = +el.dataset.n, i = +el.dataset.i;
+  if (a === "done") { const st = D(n), b = el.dataset.b; st.done[b] = !st.done[b]; markDoneUI(b, st.done[b]); save(); }
+  else if (a === "check") checkFill($(`#in-${el.dataset.ctx}-${n}-${i}`));
+  else if (a === "mc") { const it = DAYS[n-1].ex[i], o = +el.dataset.o; answer(el.dataset.ctx, n, i, o, o === it[2] ? "ok" : "wrong"); }
+  else if (a === "reset-ex") { D(n).ex = {}; D(n).done.ex = false; save(); render(); }
+  else if (a === "ai-tr") aiTranslations(n);
+  else if (a === "ai-write") aiWrite(n);
+  else if (a === "say") say(DAYS[n-1].dict[i], +el.dataset.rate);
+  else if (a === "say-card") { const c = player?.q[player.i]; if (c) say(c.it.split(" — ")[0], 0.9); }
+  else if (a === "dict-check") checkDict(n, i);
+  else if (a === "fc-start") startPlayer(el.dataset.mode, el.dataset.mode === "deck" ? el.dataset.k : n);
+  else if (a === "fc-flip") { player.show = true; drawPlayer(); }
+  else if (a === "fc-yes") fcAnswer(true);
+  else if (a === "fc-no") fcAnswer(false);
+  else if (a === "fc-dir") { player.dir = player.dir === "en" ? "it" : "en"; player.show = false; drawPlayer(); }
+  else if (a === "fc-close") { player = null; $("#player").innerHTML = ""; if (view.k === "vocab") render(); }
+  else if (a === "note-del") { S.notes = S.notes.filter(x => x.id !== el.dataset.id); save(); render(); }
+  else if (a === "timer") {
+    const id = el.id;
+    if (timers[id]) { clearInterval(timers[id]); delete timers[id]; el.classList.remove("run"); el.textContent = "1:00"; return; }
+    let s = 60; el.classList.add("run"); el.textContent = "1:00";
+    timers[id] = setInterval(() => { s--; el.textContent = s > 0 ? `0:${String(s).padStart(2, "0")}` : "Fatto!"; if (s <= 0) { clearInterval(timers[id]); delete timers[id]; el.classList.remove("run"); } }, 1000);
+  }
+});
+document.addEventListener("keydown", e => {
+  if (e.key !== "Enter") return;
+  const t = e.target;
+  if (t.matches("input.fill") && !t.readOnly) { e.preventDefault(); checkFill(t); }
+  else if (t.dataset.dict) { e.preventDefault(); const [n, i] = t.dataset.dict.split(":"); checkDict(+n, +i); }
+});
+let typeTimer = null;
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.dataset.tr) { const [n, i] = t.dataset.tr.split(":"); D(n).tr[i] = t.value; }
+  else if (t.dataset.write) { const n = t.dataset.write; D(n).write = t.value; const wc = $("#wc-" + n); if (wc) wc.textContent = wcount(t.value) + " parole"; }
+  else return;
+  clearTimeout(typeTimer); typeTimer = setTimeout(save, 600);
+});
+document.addEventListener("change", e => {
+  if (e.target.id === "start" && /^\d{4}-\d{2}-\d{2}$/.test(e.target.value)) { S.start = e.target.value; save(); render(); }
+});
+window.addEventListener("hashchange", route);
+route();
+connect();
+</script>
+
+</body>
+</html>
