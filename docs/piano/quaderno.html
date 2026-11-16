@@ -98,8 +98,12 @@ main{padding-block:24px 64px;display:flex;flex-direction:column;gap:20px}
 .btitle p{margin:0;font-size:.82rem;color:var(--muted)}
 .mins{font-size:.8rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .star{color:var(--red)}
-.check{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;flex:none;color:transparent;font-weight:700}
-.check[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--card)}
+.status{font-size:.75rem;font-weight:600;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.status.on{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.bfoot{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--line);font-size:.85rem}
+.bfoot .muted{flex:1 1 240px;min-width:0}
+.done-btn.on{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.dayprog{margin:4px 0 0;font-size:.9rem;max-width:70ch}
 .bbody{padding:16px 18px 18px;display:grid;gap:14px;min-width:0}
 .theory{margin:0;padding-left:1.1em;display:grid;gap:8px;max-width:68ch}
 
@@ -172,6 +176,7 @@ body[data-audio="no"] .audio-only{display:none}
 .notes li div{min-width:0}
 .empty{text-align:center;padding:30px 10px;color:var(--muted)}
 
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 32px);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-size:.9rem;z-index:20}
 @media (max-width:560px){
   .dayhead h1{font-size:1.6rem}
   .bhead{padding:12px 14px} .bbody{padding:14px}
@@ -192,6 +197,7 @@ body[data-audio="no"] .audio-only{display:none}
   <nav class="tabs" id="tabs"></nav>
 </div></header>
 <main class="wrap" id="app"></main>
+<div id="toast" role="status" aria-live="polite" hidden></div>
 
 <script>
 const WIKI = "https://szevez.github.io/zensical-italiano/";
@@ -205,11 +211,11 @@ const DECKS = {
   persB: { name: "Personalità (2)", src: "lessico/personalita/", cards: [
     "sincero|honest","coraggioso|brave","scherzoso|playful, jokey","ordinato|tidy","egoista|selfish","sveglio|sharp, bright","sportivo|sporty","allegro|cheerful","maleducato|rude","paziente|patient","insicuro|insecure","debole|weak","loquace|talkative","sensibile|sensitive","permaloso|touchy, easily offended","deciso|determined, decisive","intelligente|intelligent"]},
   vestiti: { name: "Vestiti e meteo", src: "lessico/vestiti/", cards: [
-    "la felpa|sweatshirt","il maglione|jumper","l'impermeabile|raincoat","l'ombrello|umbrella","le scarpe da ginnastica|trainers","i pantaloncini|shorts","il costume da bagno|swimsuit","le ciabatte|flip-flops","gli occhiali da sole|sunglasses","la camicia|shirt","la sciarpa|scarf","il cappotto|coat","il berretto|woolly hat","i guanti|gloves","gli stivali|boots","la tuta|tracksuit","Che tempo fa?|What's the weather like?","Fa freddo.|It's cold.","Piove.|It's raining.","È nuvoloso.|It's cloudy.","C'è il sole.|It's sunny."]},
+    "la felpa|sweatshirt","il maglione|jumper","l'impermeabile|raincoat","l'ombrello|umbrella","le scarpe da ginnastica|trainers","i pantaloncini|shorts","il costume da bagno|swimsuit","le infradito|flip-flops","gli occhiali da sole|sunglasses","la camicia|shirt","la sciarpa|scarf","il cappotto|coat","il berretto|woolly hat","i guanti|gloves","gli stivali|boots","la tuta|tracksuit","Che tempo fa?|What's the weather like?","Fa freddo.|It's cold.","Piove.|It's raining.","È nuvoloso.|It's cloudy.","C'è il sole.|It's sunny."]},
   bar: { name: "Al bar e al ristorante", src: "dialoghi/al-ristorante/", cards: [
     "Posso avere il conto?|Can I have the bill?","Cosa mi consiglia?|What do you recommend? (formal)","un'acqua frizzante|a sparkling water","Va forte.|It's very popular.","Sono da solo.|I'm on my own.","accomodarsi|to take a seat","Ecco a te.|Here you go. (informal)","il coperto|cover charge","lo scontrino|receipt","al banco|at the counter (standing)","un caffè macchiato|espresso with a dash of milk","il contorno|side dish","il primo / il secondo|first course / main course","Per me…|I'll have… (ordering)","Si può pagare con la carta?|Can I pay by card?","Siamo in quattro.|There are four of us.","da asporto|to take away"]},
   connettivi: { name: "Connettivi", src: null, cards: [
-    "quindi|so, therefore","però|but, however","invece|instead, on the other hand","comunque|anyway, however","infatti|indeed, in fact","inoltre|furthermore","tuttavia|nevertheless","mentre|while","nonostante|despite","anzi|on the contrary, or rather","cioè|that is, I mean","insomma|in short, all in all","siccome|since, as (reason)","perciò|that's why","eppure|and yet","affinché|so that","purché|provided that","a meno che|unless"]},
+    "quindi|so, therefore","però|but, however","invece|instead, on the other hand","comunque|anyway, however","infatti|indeed, as expected (confirms what was said)","inoltre|furthermore","tuttavia|nevertheless","mentre|while","nonostante|despite","anzi|on the contrary, or rather","cioè|that is, I mean","insomma|in short, all in all","siccome|since, as (reason)","perciò|that's why","eppure|and yet","affinché|so that","purché|provided that","a meno che|unless"]},
   casa: { name: "Casa e agenzia", src: "dialoghi/agenzia-immobiliare/", cards: [
     "i metri quadrati|square metres","ristrutturato|renovated","gli infissi|window frames","gli impianti|building systems (wiring, plumbing…)","la cucina abitabile|eat-in kitchen","ben servito|well connected (shops, transport)","fare un'offerta|to make an offer","fissare una visita|to arrange a viewing","l'affitto|rent","il proprietario|owner, landlord","le spese condominiali|building service charges","la caparra|deposit","il trasloco|house move","il soggiorno|living room","il cortile|courtyard","ammobiliato|furnished"]},
   viaggi: { name: "Viaggi e prenotazioni", src: "dialoghi/prenotazioni/", cards: [
@@ -230,21 +236,21 @@ const DAYS = [
   wiki:[["Passato prossimo","grammatica/passato-prossimo/"],["Verbo essere","grammatica/essere/"],["Verbo avere","grammatica/avere/"]],
   theory:[
     "<b>avere / essere + participio</b>: ho mangiato, sono andato.",
-    "<b>Essere</b> con i verbi di movimento e cambiamento (andare, venire, partire, nascere, diventare), con <i>stare, rimanere, piacere, costare</i> e con tutti i riflessivi (mi sono svegliato). Il participio concorda: <i>Maria è uscita</i>.",
+    "<b>Essere</b> con molti verbi di movimento e cambiamento (andare, venire, partire, nascere, diventare — ma <i>ho camminato, ho viaggiato</i>), con <i>stare, rimanere, piacere, costare</i> e con tutti i riflessivi (mi sono svegliato). Il participio concorda: <i>Maria è uscita</i>.",
     "Participi irregolari da sapere a memoria: fatto, detto, preso, messo, visto, scritto, letto, aperto, chiuso, rimasto, venuto, nato, stato, vissuto, scelto, perso, chiesto, risposto, bevuto.",
     "Con <b>lo / la / li / le</b> + avere il participio concorda: <i>Le chiavi? Le ho messe qui.</i>",
-    "Alcuni verbi cambiano ausiliare: <i>Ho finito il lavoro</i> (transitivo) / <i>Il film è finito</i> (intransitivo). Stesso con cominciare, passare."],
+    "Alcuni verbi cambiano ausiliare: <i>Ho finito il lavoro</i> (transitivo) / <i>Il film è finito</i> (intransitivo). Lo stesso vale per cominciare e passare."],
   ex:[
     ["Ieri sera io e Marco ___ (uscire) tardi.","siamo usciti"],
     ["Maria ___ (nascere) a Napoli nel 1990.","è nata"],
     ["Non ho ancora ___ (leggere) quel libro.","letto"],
     ["Stamattina mi ___ (svegliarsi) alle sei.","sono svegliato|sono svegliata","Reflexive verbs always take essere."],
-    ["Quanto ___ (costare) la cena?","è costata","costare takes essere; la cena is feminine."],
-    ["Le chiavi? Le ___ (mettere) sul tavolo.","ho messe","With avere + le, the participle agrees: messe."],
+    ["Quanto ___ (costare) la cena di ieri sera?","è costata","costare takes essere; la cena is feminine."],
+    ["Le chiavi? Le ___ (mettere, io) sul tavolo poco fa.","ho messe","With avere + le, the participle agrees: messe."],
     ["Il film ___ alle dieci.",["ha finito","è finito","è finita"],1,"finire without an object takes essere; il film is masculine."],
     ["Io ___ tutto il lavoro.",["ho finito","sono finito"],0,"With a direct object (il lavoro), finire takes avere."],
-    ["Che cosa vi ___ (dire) il professore?","ha detto"],
-    ["I ragazzi ___ (rimanere) a casa tutto il giorno.","sono rimasti"],
+    ["Che cosa vi ___ (dire) ieri il professore?","ha detto"],
+    ["Ieri i ragazzi ___ (rimanere) a casa tutto il giorno.","sono rimasti"],
     ["Ti ___ la pizza di ieri?",["è piaciuta","ha piaciuto","è piaciuto"],0,"piacere takes essere and agrees with the thing liked (la pizza)."],
     ["Abbiamo ___ (scegliere) un ristorante vicino al mare.","scelto"]],
   tr:[
@@ -268,14 +274,14 @@ const DAYS = [
     "Irregolari: essere → ero, fare → facevo, dire → dicevo, bere → bevevo.",
     "Con i modali: <i>dovevo partire</i> (era il piano, forse non sono partito) / <i>sono dovuto partire</i> (sono partito davvero)."],
   ex:[
-    ["Da bambino ___ (andare) sempre in vacanza dai nonni.","andavo","A habit in the past → imperfetto."],
-    ["Mentre ___ (fare) la doccia, è andata via la luce.","facevo"],
+    ["Da bambino ___ (andare, io) sempre in vacanza dai nonni.","andavo","A habit in the past → imperfetto."],
+    ["Mentre ___ (fare, io) la doccia, è andata via la luce.","facevo|stavo facendo"],
     ["Ieri ___ freddo e il cielo era grigio.",["ha fatto","faceva"],1,"Weather as background description → imperfetto."],
     ["All'improvviso ___ a piovere.",["cominciava","ha cominciato"],1,"'All'improvviso' marks a single event → passato prossimo."],
     ["Quando ero piccolo, ___ (essere) molto timido.","ero"],
     ["Mentre leggevo, mio fratello ___ (guardare) la TV.","guardava","Two actions in progress at the same time → both imperfetto."],
     ["Ieri sera ___ a letto alle undici.",["andavo","sono andato"],1],
-    ["Cosa ___ (dire) il cartello? Non l'ho letto.","diceva"],
+    ["Cosa ___ (dire) il cartello? Non l'ho letto.","diceva|dice"],
     ["Ogni estate ___ in Puglia.",["siamo andati","andavamo"],1,"'Ogni estate' = a repeated habit."],
     ["Stavo uscendo quando ___ (arrivare) Luca.","è arrivato"],
     ["Ieri ___ uscire, ma alla fine sono rimasto a casa.",["dovevo","sono dovuto"],0,"dovevo = the plan, which didn't happen."],
@@ -303,9 +309,9 @@ const DAYS = [
     ["Quando sono arrivato in stazione, il treno ___ (già / partire).","era già partito"],
     ["Non avevo fame perché ___ (mangiare) da poco.","avevo mangiato"],
     ["Marta era stanca perché la notte prima non ___ (dormire).","aveva dormito"],
-    ["Ho riconosciuto subito la casa in cui ___ (vivere) da bambino.","avevo vissuto|ero vissuto","vivere can take avere or essere."],
+    ["Ho riconosciuto subito la casa in cui ___ (vivere) da bambino.","avevo vissuto|ero vissuto|vivevo","vivere can take avere or essere; the imperfetto vivevo is also natural here."],
     ["Quando l'ho chiamato, Luca ___ .",["è già uscito","era già uscito","usciva già"],1],
-    ["Gli studenti ___ (finire) il compito prima della fine della lezione.","avevano finito"],
+    ["Quando è suonata la campanella, gli studenti ___ (finire) il compito da dieci minuti.","avevano finito"],
     ["Siamo tornati nel ristorante che ci ___ (consigliare) Anna.","aveva consigliato"],
     ["Ieri ho visto un film che ___ già tre volte.",["ho visto","avevo visto","vedevo"],1],
     ["Quando siamo arrivati noi, le ragazze ___ (andare) via da un'ora.","erano andate"],
@@ -331,7 +337,7 @@ const DAYS = [
     "<b>Futuro di probabilità</b>: <i>Che ore sono? Saranno le tre.</i> (I guess it's three.)",
     "<b>Futuro anteriore</b> (sarò/avrò + participio): un'azione futura che viene prima di un'altra. <i>Quando avrò finito, ti chiamerò.</i> Anche probabilità nel passato: <i>Sarà già uscito.</i>"],
   ex:[
-    ["Domani ___ (andare) al mare con Giulia.","andrò"],
+    ["Domani ___ (andare, io) al mare con Giulia.","andrò"],
     ["L'anno prossimo i miei genitori ___ (venire) a trovarmi.","verranno"],
     ["Quando ___ (avere) più tempo, imparerò a cucinare.","avrò"],
     ["Non so quanto costa: ___ (costare) circa venti euro.","costerà","Futuro di probabilità: a guess about the present."],
@@ -339,9 +345,9 @@ const DAYS = [
     ["Appena ___ (finire) di lavorare, ti chiamerò.","avrò finito|finirò","Futuro anteriore is the textbook form; finirò is also heard in speech."],
     ["Marco non risponde al telefono. ___ già a letto.",["Andrà","Sarà andato","Andava"],1,"A guess about something already done → futuro anteriore."],
     ["Che ore sono? Non ho l'orologio… ___ le sei.",["Saranno","Sono state","Erano"],0],
-    ["Quando ___ (arrivare) a Roma, mi manderete un messaggio?","sarete arrivati|arriverete"],
-    ["Domani ___ (cominciare) un nuovo corso di italiano.","comincerò"],
-    ["Se piove, noi ___ (rimanere) a casa.","rimarremo"]],
+    ["Quando ___ (arrivare) a Roma, mi manderete un messaggio?","sarete arrivati|sarete arrivate|arriverete"],
+    ["Domani ___ (cominciare, io) un nuovo corso di italiano.","comincerò"],
+    ["Se piove, noi ___ (rimanere) a casa.","rimarremo|rimaniamo","After se + presente, both futuro and presente are fine."]],
   tr:[
     ["Next week I'll visit Florence with some friends.","La settimana prossima visiterò Firenze con alcuni amici."],
     ["When I've finished this course, I'll speak better.","Quando avrò finito questo corso, parlerò meglio."],
@@ -362,17 +368,17 @@ const DAYS = [
     "<b>Lei</b> = 3ª persona singolare: <i>Lei è…, Le piace…?, il Suo nome</i>. Imperativo formale: scusi, senta, prenda, venga.",
     "Frasi d'oro: <i>Mi saprebbe dire…? Le dispiacerebbe…? Sarebbe possibile…?</i>"],
   ex:[
-    ["___ (volere) un cappuccino e un cornetto, per favore.","Vorrei"],
+    ["___ (volere, io, condizionale) un cappuccino e un cornetto, per favore.","Vorrei"],
     ["Al posto tuo, io ___ (prendere) il treno.","prenderei"],
-    ["Mi ___ (piacere) vivere al mare.","piacerebbe"],
-    ["Scusi, ___ (potere) ripetere più lentamente?","potrebbe"],
-    ["Tu ___ (dovere) dormire di più.","dovresti"],
+    ["Mi ___ (piacere, condizionale) vivere al mare.","piacerebbe"],
+    ["Scusi, ___ (potere, condizionale) ripetere più lentamente?","potrebbe"],
+    ["Tu ___ (dovere, condizionale) dormire di più.","dovresti"],
     ["Signora, ___ un caffè?",["vuoi","vuole","volete"],1,"Lei uses the 3rd person singular."],
     ["Professore, ___ dispiace se apro la finestra?",["ti","Le","gli"],1],
     ["Noi ___ (andare) volentieri a cena fuori, ma non abbiamo soldi.","andremmo","Double m in the noi form: andremmo."],
     ["___, dov'è la fermata dell'autobus? (a uno sconosciuto)",["Scusa","Scusi","Scusate"],1],
     ["Signor Rossi, di dove ___ (essere)?","è"],
-    ["Mi ___ (sapere) dire dov'è la farmacia più vicina?","saprebbe"],
+    ["Mi ___ (sapere, condizionale) dire dov'è la farmacia più vicina?","saprebbe"],
     ["Secondo i giornali, il ministro ___ (essere) malato.","sarebbe","Conditional for unconfirmed news."]],
   tr:[
     ["I'd like to book a table for two for tomorrow evening.","Vorrei prenotare un tavolo per due per domani sera."],
@@ -431,12 +437,12 @@ const DAYS = [
     ["Mentre ___ , mi ha chiamato Sara.",["ho cucinato","cucinavo"],1],
     ["Quando sono arrivato, la festa ___ (finire).","era finita|era già finita"],
     ["Quando ___ (finire) l'università, cercherò lavoro a Milano.","avrò finito|finirò"],
-    ["___ (volere) sapere quanto costa il biglietto.","Vorrei"],
+    ["___ (volere) sapere quanto costa il biglietto.","Vorrei|Volevo"],
     ["Le chiavi? Non ___ trovo più!",["le","li","gli"],0],
-    ["Hai detto ai vicini del rumore? Sì, ___ ho detto tutto ieri.","gli|l'","dire a loro → gli."],
+    ["Hai detto ai vicini del rumore? Sì, ___ ho detto tutto ieri.","gli","dire a loro → gli."],
     ["Signora, ___ piace questo vestito?",["ti","Le","La"],1],
     ["Non so dov'è Paolo. ___ (essere) in palestra.","Sarà"],
-    ["Da piccola ___ (avere) paura del buio.","avevo"],
+    ["Da piccola ___ (avere, io) paura del buio.","avevo"],
     ["Ieri sera ___ due ore al telefono con mia sorella.",["parlavo","ho parlato"],1,"A closed amount of time (due ore) → passato prossimo."],
     ["Tu ___ (dovere) provare la granita al pistacchio!","dovresti|devi"]],
   tr:[
@@ -466,12 +472,12 @@ const DAYS = [
     ["Quante mele vuoi? ___ dai tre, per favore?","Me ne"],
     ["La verità? ___ (dire, tu, a me)!","Dimmela"],
     ["Le foto per Giulia? ___ (mandare, tu) subito!","Mandagliele"],
-    ["La lettera per il direttore? ___ ho già spedita.",["Gliel'","Glielo","Gliela ho"],0,"gliela + ho → gliel'ho; participle agrees: spedita."],
+    ["La lettera per il direttore? ___ ho già spedita.",["Gliel'","Glielo","Gliele"],0,"gliela + ho → gliel'ho; participle agrees: spedita."],
     ["Signora, il conto? ___ porto subito.",["Glielo","Le lo","Lo le"],0],
     ["Ti lavi le mani? Sì, ___ lavo subito.","me le"],
     ["Voglio regalare un orologio a mio padre. → Voglio ___ .",["regalarglielo","regalarlogli","glielo regalare"],0],
     ["Dammi il sale! → ___ !","Dammelo"],
-    ["Signore, il passaporto? ___ (dare, Lei), per favore.","Me lo dia"]],
+    ["Signore, il passaporto? ___ (dare, Lei, a me), per favore.","Me lo dia"]],
   tr:[
     ["Can you lend it to me? (la macchina)","Me la puoi prestare? (Puoi prestarmela?)"],
     ["I'll tell him tomorrow. (it)","Glielo dico domani."],
@@ -530,13 +536,13 @@ const DAYS = [
     ["È importante che tu ___ (dormire) abbastanza.","dorma"],
     ["Voglio che voi ___ (venire) alla festa.","veniate"],
     ["So che Luca ___ in Italia.",["sia","è"],1,"sapere expresses certainty → indicativo."],
-    ["Spero che domani ___ (fare) bel tempo.","faccia"],
+    ["Spero che domani ___ (fare) bel tempo.","faccia|farà","After sperare the congiuntivo is the norm; the futuro is also accepted."],
     ["Penso ___ domani.",["che io parta","di partire"],1,"Same subject → di + infinitive."],
     ["Benché ___ (essere) stanca, Anna va in palestra.","sia"],
     ["Ti do le chiavi affinché tu ___ (potere) entrare.","possa"],
     ["Non credo che loro ___ (sapere) la verità.","sappiano"],
     ["Sono contento che tu ___ qui.",["sei","sia","fossi"],1],
-    ["Prima che tu ___ (uscire), chiudi la finestra.","esca"],
+    ["Prima che tu ___ (uscire), devo dirti una cosa.","esca"],
     ["Bisogna che tutti ___ (finire) il lavoro entro venerdì.","finiscano"]],
   tr:[
     ["I think it's too expensive.","Penso che sia troppo caro."],
@@ -659,7 +665,7 @@ const DAYS = [
     "Rileggi i testi scritti in questi 14 giorni: confronta il primo e l'ultimo. Cosa sai fare adesso che prima non sapevi?",
     "Decidi il piano per le prossime settimane: quali 2 argomenti vuoi rivedere?"],
   ex:[
-    ["Il gelato? ___ ho comprato per te.","Te l'|Te lo"],
+    ["Il gelato? ___ ho comprato io, è al pistacchio! (a te + lo)","Te l'|Te lo"],
     ["Quanti libri hai letto quest'anno? ___ ho letti dieci.","Ne"],
     ["Credo che lui ___ (avere) trent'anni.","abbia"],
     ["Se ___ (potere, io), verrei con voi.","potessi"],
@@ -667,12 +673,12 @@ const DAYS = [
     ["Questo vino è ___ di quello francese.",["meglio","migliore"],1],
     ["Quanto tempo ___ metti per venire qui?","ci"],
     ["La storia? ___ (raccontare, tu, a me)!","Raccontamela"],
-    ["Spero che ___ bel tempo domenica.",["fa","faccia","farà"],1],
-    ["Se avessi saputo dello sciopero, ___ (partire) un giorno prima.","sarei partito|sarei partita"],
+    ["Spero che ___ bel tempo domenica.",["fa","faccia","facesse"],1],
+    ["Se avessi saputo dello sciopero, ___ (partire, io) un giorno prima.","sarei partito|sarei partita"],
     ["Non ce la ___ (fare, io) più!","faccio"],
-    ["Hai mandato le foto alla nonna? Sì, ___ ho mandate.",["gliele","glieli","le"],0],
+    ["Hai mandato le foto alla nonna? Sì, ___ ho mandate.",["gliele","glieli","gliela"],0],
     ["Vivo in Italia ___ un mese.","da"],
-    ["Benché ___ (piovere), siamo usciti.","piovesse"]],
+    ["Benché ___ (piovere), siamo usciti.","piovesse|stesse piovendo"]],
   tr:[
     ["If I had known it, I would have told you.","Se l'avessi saputo, te l'avrei detto."],
     ["I think he's right, but I'm not sure.","Penso che abbia ragione, ma non ne sono sicuro/a."],
@@ -743,20 +749,56 @@ async function connect(){
 /* ---------- capabilities: Claude for corrections, a voice for listening ---------- */
 let samplerP = null, ttsP = null;
 function getSampler(){ return samplerP ||= (async () => { try { return window.claude?.use ? await claude.use("sample") : null; } catch { return null; } })(); }
+/* Speech: Claude's voice when the page runs on claude.ai, otherwise an Italian system voice.
+   Never read Italian with a non-Italian voice: if none is installed, hide the audio buttons. */
+let claudeTTS = null, itVoice = null, audioReady = false;
+const speechText = s => String(s).split(" — ").join(" ").replace(/([A-Za-zÀ-ÿ]+)\/[aei](?![A-Za-zÀ-ÿ])/g, "$1").replace(/\s*\/\s*/g, ", ").replace(/\([^)]*\)/g, " ").replace(/…/g, "").replace(/\s+/g, " ").trim();
+function loadVoices(){
+  if (!("speechSynthesis" in window)) return Promise.resolve([]);
+  return new Promise(res => {
+    const now = speechSynthesis.getVoices(); if (now.length) return res(now);
+    const t = setTimeout(() => res(speechSynthesis.getVoices()), 3000);
+    speechSynthesis.addEventListener("voiceschanged", () => { const v = speechSynthesis.getVoices(); if (v.length) { clearTimeout(t); res(v); } });
+  });
+}
+function pickItalian(vs){
+  const score = v => (/^it[-_]it/i.test(v.lang) ? 4 : 0) + (/premium|enhanced|natural|neural|google/i.test(v.name) ? 2 : 0) + (v.localService ? 1 : 0);
+  return vs.filter(v => /^it([-_]|$)/i.test(v.lang)).sort((a, b) => score(b) - score(a))[0] || null;
+}
 function getTTS(){
   return ttsP ||= (async () => {
-    try { const t = window.claude?.use ? await claude.use("tts") : null;
-      if (t) return { speak: (txt, rate) => t.speak(txt, { language:"it-IT", rate }).catch(() => {}) }; } catch {}
-    if ("speechSynthesis" in window) return { speak: (txt, rate) => new Promise(res => {
-      const u = new SpeechSynthesisUtterance(txt); u.lang = "it-IT"; u.rate = rate;
-      const v = speechSynthesis.getVoices().find(v => (v.lang || "").toLowerCase().startsWith("it")); if (v) u.voice = v;
-      u.onend = u.onerror = res; speechSynthesis.cancel(); speechSynthesis.speak(u); }) };
-    return null;
+    try { claudeTTS = window.claude?.use ? await claude.use("tts") : null; } catch { claudeTTS = null; }
+    itVoice = pickItalian(await loadVoices());
+    audioReady = !!(claudeTTS || itVoice);
+    return audioReady;
   })();
 }
 getSampler().then(s => { document.body.dataset.ai = s ? "yes" : "no"; });
-getTTS().then(t => { document.body.dataset.audio = t ? "yes" : "no"; });
-async function say(text, rate = 1){ const t = await getTTS(); if (t) t.speak(text, rate); }
+getTTS().then(ok => { document.body.dataset.audio = ok ? "yes" : "no"; });
+function browserSay(text, rate){
+  if (!itVoice) return false;
+  const u = new SpeechSynthesisUtterance(text); u.voice = itVoice; u.lang = itVoice.lang; u.rate = rate;
+  speechSynthesis.cancel(); speechSynthesis.speak(u); return true;
+}
+/* Called straight from the click handler (no await before speaking), so the click still counts as the gesture. */
+function say(text, rate = 1){
+  const t = speechText(text);
+  if (!audioReady) { toast("L'audio si sta ancora caricando. Riprova tra un secondo."); return; }
+  if (claudeTTS) {
+    claudeTTS.speak(t, { language: "it-IT", rate }).catch(e => {
+      const c = e && e.code;
+      if (c === "stopped") return;
+      if (c === "not_granted") { toast("La lettura ad alta voce è disattivata per questa pagina."); return; }
+      if (c === "no_gesture") { toast("Clicca di nuovo per ascoltare."); return; }
+      if (c === "busy" || c === "rate_limited") { toast("L'audio è occupato. Riprova tra poco."); return; }
+      if (!browserSay(t, rate)) toast("L'audio non è disponibile in questo momento.");
+    });
+    return;
+  }
+  browserSay(t, rate);
+}
+let toastTimer = null;
+function toast(msg){ const el = $("#toast"); if (!el) return; el.textContent = msg; el.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.hidden = true; }, 4000); }
 function aiError(e){
   const c = e && e.code;
   if (c === "not_granted") return "Hai scelto di non usare Claude da questa pagina. Puoi riattivarlo dal menu Permessi dell'artifact.";
@@ -801,6 +843,7 @@ function route(){
   else if (h === "errori") view = { k:"err" };
   else { const t = todayN(); view = t >= 1 && t <= 14 ? { k:"day", n:t } : { k:"plan" }; }
   player = null; errSnap = null;
+  Object.values(timers).forEach(clearInterval); timers = {};
   render(); window.scrollTo(0, 0);
 }
 function render(){
@@ -856,15 +899,34 @@ function dayView(n){
       <div class="bhead"><span class="bnum">${b.id === "mission" ? "+" : i + 1}</span>
         <div class="btitle"><h2>${b.core ? '<span class="star" title="Fa parte della versione corta">★</span> ' : ""}${esc(b.title)}</h2><p>${esc(b.what)}</p></div>
         <span class="mins">${b.min ? b.min + " min" : "dal vivo"}</span>
-        <button class="check" data-act="done" data-n="${n}" data-b="${b.id}" aria-pressed="${done}" aria-label="Segna ${esc(b.title)} come fatto">✓</button></div>
-      <div class="bbody">${body}</div></section>`;
+        <span class="status${done ? " on" : ""}">${done ? "✓ Fatto" : "Da fare"}</span></div>
+      <div class="bbody">${body}</div>
+      <div class="bfoot"><span class="muted">${esc(FINISH[b.id])}</span>
+        <button class="btn done-btn${done ? " on" : ""}" data-act="done" data-n="${n}" data-b="${b.id}" aria-pressed="${done}">${done ? "✓ Fatto · annulla" : "Segna come fatto"}</button></div></section>`;
   }).join("");
   return `<nav class="daynav">${n > 1 ? `<a href="#giorno-${n-1}">← Giorno ${n-1}</a>` : "<span></span>"}${n < 14 ? `<a href="#giorno-${n+1}">Giorno ${n+1} →</a>` : "<span></span>"}</nav>
   <section class="dayhead">
     <span class="eyebrow">Giorno ${n} di 14 · ${esc(fmtD(dateOf(n)))}</span>
     <h1>${esc(d.topic)}</h1>
     <div class="chips"><span class="muted" style="font-size:.85rem">Sul tuo sito:</span>${d.wiki.map(([l,p]) => `<a class="chip" href="${WIKI + p}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>
+    <p class="dayprog" id="dayprog">${dayProgHTML(n)}</p>
   </section>${blocks}`;
+}
+/* How each block gets finished: shown at the bottom of every block, next to the button. */
+const FINISH = {
+  vocab:  "Gira tutte le carte: alla fine il blocco si segna da solo.",
+  theory: "Leggi i punti ad alta voce, apri la pagina del tuo sito, poi premi «Segna come fatto».",
+  ex:     "Rispondi a tutte le domande: il blocco si segna da solo.",
+  tr:     "Si segna da solo dopo la correzione di Claude. Altrimenti confronta con le soluzioni e premi tu il pulsante.",
+  dict:   "Controlla tutte e quattro le frasi: il blocco si segna da solo.",
+  write:  "Si segna da solo dopo la correzione di Claude. Altrimenti premi tu il pulsante quando hai finito.",
+  speak:  "Avvia il timer per ogni domanda: dopo la quarta il blocco si segna da solo.",
+  mission:"Quando l'hai fatta, premi «Segna come fatto»."
+};
+function dayProgHTML(n){
+  const st = D(n), doneN = STUDY.filter(b => st.done[b.id]).length;
+  if (dayFull(n)) return `<span class="hand pen-green">Giornata completata!</span> ${doneN} di ${STUDY.length} blocchi fatti.${n < 14 ? ` <a href="#giorno-${n+1}">Giorno ${n+1} →</a>` : ""}`;
+  return `<b>${doneN} di ${STUDY.length}</b> blocchi fatti. Lavora dall'alto in basso: ogni blocco si chiude con il pulsante <b>«Segna come fatto»</b> in fondo al blocco. Per la versione corta bastano i blocchi con <span class="star">★</span>.`;
 }
 
 const BODY = {
@@ -901,7 +963,7 @@ const BODY = {
     <p class="no-ai note" style="margin:0">La correzione con Claude non è disponibile in questa finestra. Confronta con la soluzione modello: se la tua frase è diversa ma ti sembra giusta, probabilmente lo è.</p>`;
   },
   dict(d, st){
-    return `<p class="no-audio note" style="margin:0">L'audio non è disponibile in questo browser. Fai così: apri il testo, leggilo ad alta voce due volte, chiudilo e scrivilo a memoria.</p>
+    return `<p class="no-audio note" style="margin:0">Nessuna voce italiana trovata in questo browser. Su Mac puoi aggiungerla in Impostazioni di Sistema → Accessibilità → Contenuti letti → Voce di sistema → Gestisci voci → Italiano, poi ricarica la pagina. Nel frattempo: apri il testo, leggilo ad alta voce due volte, chiudilo e scrivilo a memoria.</p>
     <div style="display:grid;gap:10px">${d.dict.map((s, i) => {
       const r = st.dict[i];
       return `<div class="dict-item"><div class="row"><b>${i+1}.</b>
@@ -925,7 +987,7 @@ const BODY = {
   },
   speak(d){
     return `<p class="muted" style="margin:0;font-size:.9rem">Rispondi ad alta voce per un minuto intero, senza fermarti. Se puoi, registrati con il telefono e riascoltati: senti dove esiti?</p>
-      <ul class="qs">${d.speak.map((q, i) => `<li><span>${esc(q)}</span><button class="btn small timer" data-act="timer" id="tm-${i}">1:00</button></li>`).join("")}</ul>`;
+      <ul class="qs">${d.speak.map((q, i) => `<li><span>${esc(q)}</span><button class="btn small timer" data-act="timer" data-n="${d.n}" data-i="${i}" id="tm-${i}" aria-label="Avvia un minuto per rispondere">▶ 1:00</button></li>`).join("")}</ul>`;
   },
   mission(d){
     return `<p class="mission">${esc(d.mission)}</p><p class="muted" style="margin:0;font-size:.85rem">Quando l'hai fatta, segnala con ✓ qui sopra. Annota una parola nuova che hai sentito.</p>`;
@@ -964,6 +1026,7 @@ function answer(ctx, n, i, given, r){
   if (ctx === "d") {
     const st = D(n); st.ex[i] = { r, g: given };
     if (r === "wrong") S.errs[key] = { t: Date.now(), c: (S.errs[key]?.c || 0) + 1 };
+    else delete S.errs[key];
     if (Object.keys(st.ex).length === DAYS[n-1].ex.length) st.done.ex = true;
   } else {
     errSnap[key] = { r, g: given };
@@ -988,7 +1051,10 @@ function checkFill(el){
 }
 function markDoneUI(b, on){
   const sec = $("#b-" + b); if (!sec) return;
-  sec.classList.toggle("isdone", on); const c = sec.querySelector(".check"); if (c) c.setAttribute("aria-pressed", on);
+  sec.classList.toggle("isdone", on);
+  const s = sec.querySelector(".status"); if (s) { s.textContent = on ? "✓ Fatto" : "Da fare"; s.classList.toggle("on", on); }
+  const btn = sec.querySelector(".done-btn"); if (btn) { btn.textContent = on ? "✓ Fatto · annulla" : "Segna come fatto"; btn.classList.toggle("on", on); btn.setAttribute("aria-pressed", on); }
+  const p = $("#dayprog"); if (p && view.k === "day") p.innerHTML = dayProgHTML(view.n);
 }
 
 /* ----- translation feedback ----- */
@@ -1174,7 +1240,7 @@ function errView(){
 }
 
 /* ---------- events ---------- */
-let timers = {};
+let timers = {}; const spoken = new Set();
 document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]"); if (!el) return;
   const a = el.dataset.act, n = +el.dataset.n, i = +el.dataset.i;
@@ -1185,7 +1251,7 @@ document.addEventListener("click", e => {
   else if (a === "ai-tr") aiTranslations(n);
   else if (a === "ai-write") aiWrite(n);
   else if (a === "say") say(DAYS[n-1].dict[i], +el.dataset.rate);
-  else if (a === "say-card") { const c = player?.q[player.i]; if (c) say(c.it.split(" — ")[0], 0.9); }
+  else if (a === "say-card") { const c = player?.q[player.i]; if (c) say(c.it, 0.9); }
   else if (a === "dict-check") checkDict(n, i);
   else if (a === "fc-start") startPlayer(el.dataset.mode, el.dataset.mode === "deck" ? el.dataset.k : n);
   else if (a === "fc-flip") { player.show = true; drawPlayer(); }
@@ -1196,9 +1262,16 @@ document.addEventListener("click", e => {
   else if (a === "note-del") { S.notes = S.notes.filter(x => x.id !== el.dataset.id); save(); render(); }
   else if (a === "timer") {
     const id = el.id;
-    if (timers[id]) { clearInterval(timers[id]); delete timers[id]; el.classList.remove("run"); el.textContent = "1:00"; return; }
+    if (timers[id]) { clearInterval(timers[id]); delete timers[id]; el.classList.remove("run"); el.textContent = "▶ 1:00"; return; }
     let s = 60; el.classList.add("run"); el.textContent = "1:00";
-    timers[id] = setInterval(() => { s--; el.textContent = s > 0 ? `0:${String(s).padStart(2, "0")}` : "Fatto!"; if (s <= 0) { clearInterval(timers[id]); delete timers[id]; el.classList.remove("run"); } }, 1000);
+    timers[id] = setInterval(() => {
+      s--; el.textContent = s > 0 ? `0:${String(s).padStart(2, "0")}` : "✓ Fatto";
+      if (s <= 0) {
+        clearInterval(timers[id]); delete timers[id]; el.classList.remove("run");
+        spoken.add(n + ":" + i);
+        if (DAYS[n-1].speak.every((_, k) => spoken.has(n + ":" + k)) && !D(n).done.speak) { D(n).done.speak = true; markDoneUI("speak", true); save(); }
+      }
+    }, 1000);
   }
 });
 document.addEventListener("keydown", e => {
